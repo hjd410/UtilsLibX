@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/facade/TileFacade",["exports","../utils/Resource"],function(_1,_2){_1.getTileInfoData=function(_3,_4){var _5=dojoConfig.token;var _6=_5?{headers:{"access-key":_5}}:undefined;_2.loadJson(_3,_6,_4);};_1.loadTile=function(_7,_8){var _9=dojoConfig.token;var _a=_9?{headers:{"access-key":_9}}:undefined;return _2.loadImage(_7,_a,_8);};});

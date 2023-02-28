@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/widget/Snapshot",["dojo/_base/declare","dojo/dom-construct","dojo/dom-style","./ModuleX"],function(_1,_2,_3,_4){return _1("com.huayun.framework.widget.Snapshot",[_4],{constructor:function(){},postCreate:function(){this.inherited(arguments);_3.set(this.domNode,"pointer-events","all");},doInit:function(){_2.create("div",{id:"snapshotBtn",innerHTML:"Snapshot",onclick:this._onClickHandler.bind(this)},this.domNode);},_onClickHandler:function(){}});});

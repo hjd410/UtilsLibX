@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/symbols/BaseSymbol",[],function(){function _1(_2){this.minScale=0;this.maxScale=0;this.fixedSize=_2.fixedSize||_2.isFixed||true;this.fixed={isFixed:this.fixedSize,addratio:0};};return _1;});

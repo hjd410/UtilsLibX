@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/framework/vo/ModuleXVo",["dojo/_base/declare","com/huayun/util/HashTable"],function(_1,_2){return _1("com.huayun.framework.vo.ModuleXVo",null,{configUrl:"",id:"",identifyId:"",preLoad:false,hash:new _2(),constructor:function(){}});});

@@ -32,7 +32,7 @@ import java.util.Iterator;
 import java.util.Map;
 
 
-public abstract class BaseActivity extends FragmentActivity {
+public abstract class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          BaseActivity extends FragmentActivity {
     private TextView tvTitle;
     private boolean toastAutoCancel = true;
     private static final String TAG = "uploadImage";

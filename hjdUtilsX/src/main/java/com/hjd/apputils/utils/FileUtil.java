@@ -1,11 +1,16 @@
 package com.hjd.apputils.utils;
 
+import android.content.ActivityNotFoundException;
+import android.content.Context;
+import android.content.Intent;
+import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Rect;
 import android.media.MediaMetadataRetriever;
 import android.os.Environment;
+import android.security.KeyChain;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -14,12 +19,14 @@ import androidx.annotation.Nullable;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedOutputStream;
+import java.io.BufferedReader;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.io.RandomAccessFile;
 import java.net.HttpURLConnection;
 import java.net.URL;
@@ -32,6 +39,8 @@ import java.util.HashMap;
  * /-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/-/
  */
 public class FileUtil {
+    private static final String FILENAME_PATTERN = "[a-zA-Z0-9_\\-\\|\\.\\u4e00-\\u9fa5]+";
+
 
     /**
      * 根据路径获取文件名
@@ -180,8 +189,8 @@ public class FileUtil {
     //获取sd卡路径
     public static String getSDPath() {
         File sdDir = null;
-        boolean sdCardExist = Environment.getExternalStorageState()
-                .equals(Environment.MEDIA_MOUNTED);//判断sd卡是否存在
+        boolean sdCardExist =
+                Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED);//判断sd卡是否存在
         if (sdCardExist) {
             sdDir = Environment.getExternalStorageDirectory();//获取跟目录
         }
@@ -203,7 +212,8 @@ public class FileUtil {
         File dirFile = new File(filePath);
         // 如果dir对应的文件不存在，或者不是一个目录，则退出
         if ((!dirFile.exists()) || (!dirFile.isDirectory())) {
-            //            Toast.makeText(UApplication.getuApplication(), "删除目录失败：" + filePath + "不存在！", Toast.LENGTH_SHORT).show();
+            //            Toast.makeText(UApplication.getuApplication(), "删除目录失败：" + filePath +
+            //            "不存在！", Toast.LENGTH_SHORT).show();
             return false;
         }
         boolean flag = true;
@@ -220,8 +230,7 @@ public class FileUtil {
             }
             // 删除子目录
             else if (file.isDirectory()) {
-                flag = deleteDirectory(file
-                        .getAbsolutePath());
+                flag = deleteDirectory(file.getAbsolutePath());
                 if (!flag) {
 
                     break;
@@ -229,7 +238,8 @@ public class FileUtil {
             }
         }
         if (!flag) {
-            //            Toast.makeText(UApplication.getuApplication(), "删除目录失败！", Toast.LENGTH_SHORT).show();
+            //            Toast.makeText(UApplication.getuApplication(), "删除目录失败！", Toast
+            //            .LENGTH_SHORT).show();
             return false;
         }
         // 删除当前目录
@@ -237,7 +247,8 @@ public class FileUtil {
             Log.e("--Method--", "Copy_Delete.deleteDirectory: 删除目录" + filePath + "成功！");
             return true;
         } else {
-            //            Toast.makeText(UApplication.getuApplication(), "删除目录：" + filePath + "失败！", Toast.LENGTH_SHORT).show();
+            //            Toast.makeText(UApplication.getuApplication(), "删除目录：" + filePath +
+            //            "失败！", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -271,11 +282,13 @@ public class FileUtil {
                 Log.e("--Method--", "Copy_Delete.deleteSingleFile: 删除单个文件" + filePath$Name + "成功！");
                 return true;
             } else {
-                //                Toast.makeText(UApplication.getuApplication(), "删除单个文件" + filePath$Name + "失败！", Toast.LENGTH_SHORT).show();
+                //                Toast.makeText(UApplication.getuApplication(), "删除单个文件" +
+                //                filePath$Name + "失败！", Toast.LENGTH_SHORT).show();
                 return false;
             }
         } else {
-            //            Toast.makeText(UApplication.getuApplication(), "删除单个文件失败：" + filePath$Name + "不存在！", Toast.LENGTH_SHORT).show();
+            //            Toast.makeText(UApplication.getuApplication(), "删除单个文件失败：" +
+            //            filePath$Name + "不存在！", Toast.LENGTH_SHORT).show();
             return false;
         }
     }
@@ -329,8 +342,8 @@ public class FileUtil {
         return bitmap;
     }
 
-    public static Bitmap decodeSampledBitmapFromResoruce(Resources res, int resId,
-                                                         int reqWidth, int reqHeight) {
+    public static Bitmap decodeSampledBitmapFromResoruce(Resources res, int resId, int reqWidth,
+                                                         int reqHeight) {
         // 获取 BitmapFactory.Options，这里面保存了很多有关 Bitmap 的设置
         final BitmapFactory.Options options = new BitmapFactory.Options();
         // 设置 true 轻量加载图片信息
@@ -344,8 +357,8 @@ public class FileUtil {
         return BitmapFactory.decodeResource(res, resId, options);
     }
 
-    public static int calculateInSampleSize(BitmapFactory.Options options,
-                                            int reqWidth, int reqHeight) {
+    public static int calculateInSampleSize(BitmapFactory.Options options, int reqWidth,
+                                            int reqHeight) {
         final int width = options.outWidth;
         final int height = options.outHeight;
         int inSampleSize = 1;
@@ -354,7 +367,7 @@ public class FileUtil {
             final int halfHeight = height / 2;
             final int halfWidth = width / 2;
             while ((halfHeight / inSampleSize) >= reqHeight &&
-                    (halfWidth / inSampleSize) >= reqWidth) {
+                   (halfWidth / inSampleSize) >= reqWidth) {
                 inSampleSize *= 2;
             }
         }
@@ -391,23 +404,25 @@ public class FileUtil {
      * @param append   是否追加写入，true为追加写入，false为重写文件
      * @param autoLine 针对追加模式，true为增加时换行，false为增加时不换行
      */
-    public synchronized static void writeFileToSDCard(@NonNull final String buffer, @Nullable final String folder,
-                                                      @Nullable final String fileName, final boolean append, final boolean autoLine) {
+    public synchronized static void writeFileToSDCard(@NonNull final String buffer,
+                                                      @Nullable final String folder,
+                                                      @Nullable final String fileName,
+                                                      final boolean append,
+                                                      final boolean autoLine) {
         new Thread(new Runnable() {
             @Override
             public void run() {
-                boolean sdCardExist = Environment.getExternalStorageState().equals(
-                        android.os.Environment.MEDIA_MOUNTED);
+                boolean sdCardExist =
+                        Environment.getExternalStorageState().equals(android.os.Environment.MEDIA_MOUNTED);
                 String folderPath = "";
                 if (sdCardExist) {
                     //TextUtils为android自带的帮助类
                     if (TextUtils.isEmpty(folder)) {
                         //如果folder为空，则直接保存在sd卡的根目录
-                        folderPath = Environment.getExternalStorageDirectory()
-                                + File.separator;
+                        folderPath = Environment.getExternalStorageDirectory() + File.separator;
                     } else {
-                        folderPath = Environment.getExternalStorageDirectory()
-                                + File.separator + folder + File.separator;
+                        folderPath = Environment.getExternalStorageDirectory() + File.separator +
+                                     folder + File.separator;
                     }
                 } else {
                     return;
@@ -461,4 +476,165 @@ public class FileUtil {
             }
         }).start();
     }
+
+
+    /**
+     * 获取Assets里面的文件
+     * 获取json的值,根据本地文案名
+     */
+    public static String getAssetsJson(String fileName, Context context) {
+        StringBuilder stringBuilder = new StringBuilder();
+        try {
+            AssetManager assets = context.getAssets();
+            BufferedReader bf = new BufferedReader(new InputStreamReader(assets.open(fileName)));
+            String line;
+            while ((line = bf.readLine()) != null) {
+                stringBuilder.append(line);
+            }
+            return stringBuilder.toString();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return "";
+    }
+
+    /**
+     * 校验文件
+     */
+    public static boolean checkFilename(String filename) {
+        return filename.matches(FILENAME_PATTERN);
+    }
+
+
+    /**
+     * 将asset文件写入缓存
+     */
+    public static boolean copyAssetAndWrite(String fileName, Context context) {
+        try {
+            File cacheDir = context.getCacheDir();
+            if (!cacheDir.exists()) {
+                cacheDir.mkdirs();
+            }
+            File outFile = new File(cacheDir, fileName);
+            if (!outFile.exists()) {
+                boolean res = outFile.createNewFile();
+                if (!res) {
+                    return false;
+                }
+            } else {
+                if (outFile.length() > 10) {//表示已经写入一次
+                    return true;
+                }
+            }
+            InputStream is = context.getAssets().open(fileName);
+            FileOutputStream fos = new FileOutputStream(outFile);
+            byte[] buffer = new byte[1024];
+            int byteCount;
+            while ((byteCount = is.read(buffer)) != -1) {
+                fos.write(buffer, 0, byteCount);
+            }
+            fos.flush();
+            is.close();
+            fos.close();
+            return true;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return false;
+    }
+
+
+    public static void installCert(Context context, String cerName) {
+
+        InputStream assetsIn = null;
+        Intent intent = KeyChain.createInstallIntent();
+        try {
+            //获取证书流，注意参数为assets目录文件全名
+            assetsIn = context.getAssets().open(cerName);
+            byte[] cert = new byte[10240];
+            assetsIn.read(cert);
+            javax.security.cert.X509Certificate x509 = null;
+            try {
+                x509 = javax.security.cert.X509Certificate.getInstance(cert);
+                //将证书传给系统
+                intent.putExtra(KeyChain.EXTRA_CERTIFICATE, x509.getEncoded());
+            } catch (javax.security.cert.CertificateException e) {
+                e.printStackTrace();
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        //此处为给证书设置默认别名，第二个参数可自定义，设置后无需用户输入
+        intent.putExtra("name", "SiJi");
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+        Log.d("证书安装：", "证书安装成功");
+        try {
+            context.startActivity(intent);
+        } catch (ActivityNotFoundException e) {
+            e.printStackTrace();
+            Log.e("证书安装：", "安装证书异常");
+        }
+    }
+
+
+    public static boolean checkFileType(String fileName, String[] extendNames) {
+        //遍历后缀名称集合
+        for (String end : extendNames) {
+            //判断后缀名称是否存在数组中
+            if (fileName.endsWith(end))
+                return true;
+        }
+        //如果后缀名称不存在数组中，返回false
+        return false;
+    }
+
+    /**
+     * 保存文件预览的目录
+     *
+     * @param context 上下文对象
+     */
+    public static File getTBSFileDir(Context context) {
+        String dirName = "TBSFile";
+        return context.getExternalFilesDir(dirName);
+    }
+
+    /**
+     * 把asset的文件转化为本地文件
+     *
+     * @param context 上下文对象
+     * @param oldPath 旧的文件路径
+     * @param newPath 新的文件路径
+     */
+    public static boolean copyAssets(Context context, String oldPath, String newPath) {
+        try {
+            String fileNames[] = context.getAssets().list(oldPath);// 获取assets目录下的所有文件及目录名
+            if (fileNames.length > 0) {// 如果是目录
+                File file = new File(newPath);
+                file.mkdirs();// 如果文件夹不存在，则递归
+                for (String fileName : fileNames) {
+                    copyAssets(context, oldPath + "/" + fileName, newPath + "/" + fileName);
+                }
+            } else {// 如果是文件
+                InputStream is = context.getAssets().open(oldPath);
+                FileOutputStream fos = new FileOutputStream(new File(newPath));
+                byte[] buffer = new byte[1024];
+                int byteCount;
+                while ((byteCount = is.read(buffer)) != -1) {// 循环从输入流读取
+                    // buffer字节
+                    fos.write(buffer, 0, byteCount);// 将读取的输入流写入到输出流
+                }
+                fos.flush();// 刷新缓冲区
+                is.close();
+                fos.close();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+
 }

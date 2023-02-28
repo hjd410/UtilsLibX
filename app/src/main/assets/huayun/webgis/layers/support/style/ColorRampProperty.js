@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/support/style/ColorRampProperty",[],function(){var _1=function _1(_2){this.specification=_2;};_1.prototype.possiblyEvaluate=function possiblyEvaluate(_3,_4){return !!_3.expression.evaluate(_4);};_1.prototype.interpolate=function interpolate(){return false;};return _1;});

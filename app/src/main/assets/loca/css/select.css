@@ -1,0 +1,87 @@
+ul, li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+li {
+    width: 100%;
+    padding: .5em .5em;
+    display: -webkit-box !important;
+    display: box !important;
+    position: relative;
+
+}
+
+.bc-head {
+    background-color: #44af95;
+    color: rgb(255, 255, 255);
+}
+
+.radioSelect {
+    position: absolute;
+    right: 5%;
+    width: 10%;
+    height: 100%;
+    padding-top: 0.2em;
+}
+
+.text {
+    width: 85%;
+    word-wrap: break-word;
+    word-break: break-all;
+    overflow: hidden;
+}
+
+.footer {
+    height: 2.8em;
+    width: 100%;
+    padding: 0.3em 0em 0em 0em;
+    margin: 0;
+    position: fixed;
+    bottom: 0;
+    background-color: #FFF;
+}
+
+.footer_btn {
+    width: 40%;
+    font-size: 1.1em;
+    text-align: center;
+    padding: .2em;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+input[type="radio"] + label::before {
+    content: "\a0"; /*不换行空格*/
+    display: inline-block;
+    vertical-align: .2em;
+    width: 1.2em;
+    height: 1.2em;
+    margin-right: .2em;
+    border-radius: .2em;
+    background-color: silver;
+    text-indent: .15em;
+    line-height: 1.05; /*行高不加单位，子元素将继承数字乘以自身字体尺寸而非父元素行高*/
+}
+
+input[type="radio"]:checked + label::before {
+    content: "\2713";
+    background-color: yellowgreen;
+}
+
+input {
+    position: absolute;
+    clip: rect(0, 0, 0, 0);
+}
+
+input[type="radio"]:focus + label::before {
+    box-shadow: 0 0 .1em .1em #58a;
+}
+
+input[type="radio"]:disabled + label::before {
+    background-color: gray;
+    box-shadow: none;
+    color: #555;
+}

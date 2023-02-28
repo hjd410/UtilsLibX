@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/support/expression/types",["exports"],function(_1){var _2={kind:"null"};var _3={kind:"number"};var _4={kind:"string"};var _5={kind:"boolean"};var _6={kind:"color"};var _7={kind:"object"};var _8={kind:"value"};var _9={kind:"error"};var _a={kind:"collator"};var _b={kind:"formatted"};_1.NullType=_2;_1.NumberType=_3;_1.StringType=_4;_1.BooleanType=_5;_1.ColorType=_6;_1.ObjectType=_7;_1.ValueType=_8;_1.ErrorType=_9;_1.CollatorType=_a;_1.FormattedType=_b;});

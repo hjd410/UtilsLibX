@@ -1,0 +1,18 @@
+<div class="${baseClass}" id="supply">
+    <div class="power-tap">
+        <span class="tap-title">供电范围分析</span>
+        <span class="close-tap" data-dojo-attach-event="onclick:onSupplyClose">
+            <img src="${picUrl}" alt="关闭">
+        </span>
+    </div>
+    <div class="search">
+        <span class="picStyle1"><img src="${pic1Url}"></span> 
+        <span id="devSelectName" class="devText">请选择设备</span>
+        <span class="picStyle3" data-dojo-attach-event="onclick:onSupplySelect"><img src="${pic3Url}"></span>
+        <span class="picStyle2" data-dojo-attach-event="onclick:onSupplyCloseDev"><img src="${pic2Url}" alt="关闭搜索"></span>
+    </div>
+    <div class="mesList" id="supplyList">
+        <div class="mesTitle">电网资源信息</div>
+        <div id="extentShow"></div>
+    </div>
+</div>

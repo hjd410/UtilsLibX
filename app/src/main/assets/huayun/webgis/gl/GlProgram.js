@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/gl/GlProgram",[],function(){var _1=function(_2,_3,_4,_5){var gl=_2.gl;this.program=gl.createProgram();var _6=_4.defines();};_1.prototype.draw=function(_7,_8,_9,_a,_b,_c,_d,_e,_f,_10,_11,_12,_13,_14,_15,_16){};return _1;});

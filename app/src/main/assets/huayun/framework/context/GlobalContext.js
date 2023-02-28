@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/framework/context/GlobalContext",["dojo/_base/declare","../../util/HashTable","./BaseContext"],function(_1,_2,_3){var _4=null;return _1("com.huayun.framework.context.GlobalContext",[_3],{constructor:function(){if(_4==null){_4=this;}},getInstance:function(){return _4;}}).call(this);});

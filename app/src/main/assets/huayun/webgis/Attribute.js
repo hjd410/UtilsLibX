@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/Attribute",[],function(){function _1(){this.name="";this.value=null;};_1.prototype.clone=function(){var _2=new _1();_2.name=this.name;_2.value=this.value;return _2;};return _1;});

@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/utils/coordinateTransform",["exports"],function(_1){var _2=6378137;_1.lngLatToMercatorXY=function(_3,_4){89.99999<_4?_4=89.99999:-89.99999>_4&&(_4=-89.99999);_4*=0.017453292519943;var x=0.017453292519943*_3*_2;var y=0.5*_2*Math.log((1+Math.sin(_4))/(1-Math.sin(_4)));return [x,y];};_1.mercatorXYToLngLat=function(x,y){x=x/_2*57.29577951308232;y=57.29577951308232*(Math.PI/2-2*Math.atan(Math.exp(-1*y/_2)));return [x,y];};});

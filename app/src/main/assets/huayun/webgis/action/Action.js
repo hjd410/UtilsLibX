@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/action/Action",["dojo/_base/declare"],function(_1){return _1("com.huayun.webgis.action.Action",null,{id:"",isActive:false,params:null,endActionMethod:null,constructor:function(_2){this.id="";this.isActive=false;this.state=false;this.params=null;this.endActionMethod=null;_1.safeMixin(this,_2);},doActive:function(_3){}});});

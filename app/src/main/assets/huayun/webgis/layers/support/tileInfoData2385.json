@@ -1,0 +1,129 @@
+{
+   "currentVersion": 10.7,
+   "name": "World_Basemap",
+   "capabilities": "TilesOnly,Tilemap",
+   "type": "Vector",
+   "tileMap": "/tilemap",
+   "initialExtent": {
+      "xmin": 307543.51669999957,
+      "ymin": 1093440.0414000005,
+      "xmax": 784229.2726999996,
+      "ymax":  6051055.7797,
+      "spatialReference": {
+         "cs": "pcs",
+         "wkid": 2385
+      }
+   },
+   "fullExtent": {
+      "xmin": 307543.51669999957,
+      "ymin": 1093440.0414000005,
+      "xmax": 784229.2726999996,
+      "ymax":  6051055.7797,
+      "spatialReference": {
+         "cs": "pcs",
+         "wkid": 2385
+      }
+   },
+   "tiles": [
+      "http://10.136.33.95:8087/hygis/basic/VectorTileServer/tile/{z}/{x}/{y}.pbf"
+   ],
+   "minScale": 0.0,
+   "maxScale": 0.0,
+   "tileInfo": {
+      "rows": 256,
+      "cols": 256,
+      "dpi": 96,
+      "origin": {
+         "x": -5466274.966255,
+         "y": 10345174.966255
+      },
+      "spatialReference": {
+         "wkid": 2385
+      }
+   },
+   "lods" : [
+      {
+         "level" : 0,
+         "resolution" : 8669.88400643468,
+         "scale" : 32768000
+      },
+      {
+         "level" : 1,
+         "resolution" : 4334.94200321734,
+         "scale" : 16384000
+      },
+      {
+         "level" : 2,
+         "resolution" : 2167.47100160867,
+         "scale" : 8192000
+      },
+      {
+         "level" : 3,
+         "resolution" : 1083.73550080434,
+         "scale" : 4096000
+      },
+      {
+         "level" : 4,
+         "resolution" : 541.867750402168,
+         "scale" : 2048000
+      },
+      {
+         "level" : 5,
+         "resolution" : 270.933875201084,
+         "scale" : 1024000
+      },
+      {
+         "level" : 6,
+         "resolution" : 135.466937600542,
+         "scale" : 512000
+      },
+      {
+         "level" : 7,
+         "resolution" : 67.7334688002709,
+         "scale" : 256000
+      },
+      {
+         "level" : 8,
+         "resolution" : 33.8667344001355,
+         "scale" : 128000
+      },
+      {
+         "level" : 9,
+         "resolution" : 16.9333672000677,
+         "scale" : 64000
+      },
+      {
+         "level" : 10,
+         "resolution" : 8.466683600033869,
+         "scale" : 32000
+      },
+      {
+         "level" : 11,
+         "resolution" : 4.23334180001693,
+         "scale" : 16000
+      },
+      {
+         "level" : 12,
+         "resolution" : 2.11667090000847,
+         "scale" : 8000
+      },
+      {
+         "level" : 13,
+         "resolution" : 1.058335450004230,
+         "scale" : 4000
+      },
+      {
+         "level" : 14,
+         "resolution" : 0.529167725002117,
+         "scale" : 2000
+      },
+      {
+         "level" : 15,
+         "resolution" : 0.264583862501058,
+         "scale" : 1000
+      }
+   ],
+   "minLOD": 0,
+   "maxLOD": 16,
+   "maxExportTilesCount": 10000
+}

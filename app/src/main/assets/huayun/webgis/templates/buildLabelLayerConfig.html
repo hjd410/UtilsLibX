@@ -1,0 +1,35 @@
+<table>
+
+    <tr>
+        <td>图层名称:</td>
+        <td><input type="text" value="${name}"></td>
+    </tr>
+    <tr>
+        <td>标签颜色:</td>
+        <td>
+            <input type="text" data-dojo-attach-point="labelColorNode">
+            <button data-dojo-attach-event="onclick:showColorPalette">调色盘</button>
+        </td>
+    </tr>
+    <tr>
+        <td>标签透明度:</td>
+        <td><div data-dojo-attach-point="labelalphaSlider"></div></td>
+        <td><span data-dojo-attach-point="labelAlphaNode"></span></td>
+    </tr>
+    <!--<tr>
+        <td>标签字体:</td>
+        <td>
+            <input type="text" data-dojo-attach-point="labelFontNode">
+        </td>
+    </tr>-->
+    <tr>
+        <td>图层可见性:</td>
+        <td>
+            <input name="labelVisibility" data-dojo-attach-point="labelVisibilityNode" type="radio" value="true" checked>显示
+            <input name="labelVisibility" type="radio" value="false">隐藏
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" style="text-align: center"><button data-dojo-attach-event="onclick:submitLabel">确定</button></td>
+    </tr>
+</table>

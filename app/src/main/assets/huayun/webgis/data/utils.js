@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/data/utils",["exports"],function(_1){function _2(_3,_4,_5,_6,up,_7,_8){_3.emplaceBack((_4.x<<1)+(_6?1:0),(_4.y<<1)+(up?1:0),Math.round(EXTRUDE_SCALE*_5.x)+128,Math.round(EXTRUDE_SCALE*_5.y)+128,((_7===0?0:(_7<0?-1:1))+1)|(((_8*LINE_DISTANCE_SCALE)&63)<<2),(_8*LINE_DISTANCE_SCALE)>>6);};_1.addLineVertex=_2;});

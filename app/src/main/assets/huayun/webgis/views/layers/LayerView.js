@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/views/layers/LayerView",[],function(){function _1(_2){this.id=_2&&_2.id?_2.id:"layerView";this.layer=_2.layer;this.view=_2.view;};_1.prototype.refresh=function(){};return _1;});

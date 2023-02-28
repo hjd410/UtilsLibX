@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/core/base",["custom/crypto-js.min"],function(b){function d(a){return 10>a?"0"+a:a}if(dojoConfig&&dojoConfig.app){var e=dojoConfig.app.accessKey,f=dojoConfig.app.secretKey;if(e&&f){var g=b.enc.Utf8.parse("123456yrxo@kc6x3"),c=new Date,h=c.getFullYear()+d(c.getMonth()+1)+d(c.getDate());dojoConfig.token=function(a,c){a=b.enc.Utf8.parse(a+"+"+c+"+"+h);return b.AES.encrypt(a,g,{mode:b.mode.ECB,padding:b.pad.Pkcs7}).toString()}(e,f)}}});

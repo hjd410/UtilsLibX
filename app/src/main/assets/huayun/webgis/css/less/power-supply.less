@@ -1,0 +1,174 @@
+#supply {
+  position: absolute;
+  top: 20px;
+  right: 75px;
+  width: 20px;
+  height: 20px;
+  background: url('../images/power/supplyrange.png') no-repeat center center;
+  background-color: white;
+}
+
+#supply:hover {
+  background-color: mediumblue;
+}
+.power-supply {
+  width: 275px;
+  height: 500px;
+  position: absolute;
+  top: 45px;
+  right: 75px;
+  display: none;
+  background-color: rgb(255, 255, 255);
+}
+
+.power-supply .power-tap {
+  height: 30px;
+  width: 100%;
+  position: relative;
+  background-color: rgb(248, 248, 248);
+  border-bottom: 1px solid rgb(200, 200, 200);
+}
+
+.power-supply .power-tap .tap-title {
+  height: 30px;
+  position: absolute;
+  left: 10px;
+  line-height: 30px;
+}
+
+.power-supply .power-tap .close-tap {
+  height: 30px;
+  position: absolute;
+  right: 5px;
+  line-height: 30px;
+}
+
+.power-supply .search {
+  height: 40px;
+  width: 255px;
+  line-height: 40px;
+  margin: auto 10px;
+  background-color: rgb(255,255,255);
+}
+
+.power-supply .search .devText {
+  display: inline-block;
+  height: 20px;
+  width:200px;
+  line-height: 20px;
+  margin: 10px auto;
+}
+
+.power-supply .search .picStyle1 {
+  display: inline-block;
+  margin: 0 5px;
+  float: left;
+}
+.power-supply .search .picStyle2 {
+  display: inline-block;
+  margin: 0 2px;
+  float: right;
+}
+.power-supply .search .picStyle3 {
+  display: inline-block;
+  margin: 0 2px;
+  float: right;
+}
+
+.power-supply .search .picStyle3:hover {
+  cursor: pointer;
+}
+
+.power-supply .search:after {
+  clear: both;
+}
+
+.power-supply .mesList {
+  width: 100%;
+  height: 428px;
+}
+
+.power-supply .mesList .mesTitle {
+  width: 100%;
+  height: 30px;
+  line-height: 30px;
+  margin: 0 auto;
+  text-align: center;
+  background-color: rgb(249, 249, 249);
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.power-supply .mesList .mesTitle:hover {
+  background-color: rgb(209, 219, 219);
+}
+
+.power-supply .mesList #extentShow {
+  height: 396px;
+  width: 100%;
+  overflow-y: hidden;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon {
+  width: 100%;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .treeBtn {
+  height: 21px;
+  padding: 3px 10px;
+  cursor: pointer;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .treeBtn:hover {
+  background-color: rgba(206, 219, 219, 0.6);
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .treeBtn .pic {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/power/closep.png") no-repeat;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .treeBtn .picName {
+  display: inline-block;
+  margin: 0 5px;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .showMes {
+  display: none;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .showMes .oneDev {
+  padding: 0 10px 0 15px;
+  margin: 3px 0;
+  cursor: pointer;
+  border-bottom: 1px solid rgb(109, 109, 109);
+  //background-color: #afd6d7;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .showMes .oneDev:hover {
+  background-color: rgba(206, 219, 219, 0.6);
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .showMes .oneDev .table {
+  table-layout: fixed;
+}
+
+.power-supply .mesList #extentShow .simpleShowCon .showMes .oneDev .table .simpleShowP .tdTitle {
+  width: 50px !important;
+}
+
+.picOpen {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background: url("../images/power/open.png") no-repeat;
+}
+
+.showScroll {
+  overflow-y: scroll !important;
+}
+
+.changeCursor {
+  cursor: url('../images/power/signred.png') 5 30 ,default !important;
+}

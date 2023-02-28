@@ -1,0 +1,117 @@
+.bookMark {
+  width: 26px;
+  background-color: transparent;
+  font-size: 14px;
+  color: lightskyblue;
+  text-align: center;
+  .book-mark-btn {
+    width: 35px;
+    height: 35px;
+    background: @bookMarkIcon no-repeat center;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .book-mark-btn:hover {
+    width: 35px;
+    height: 35px;
+    background: @bookMarkHoverIcon no-repeat center;
+    background-color: #fff;
+    cursor: pointer;
+  }
+  .bookMarkView {
+    width: 500px;
+    height: 500px;
+    top: 68px;
+    right: 28px;
+    background-color: #fff;
+    position: fixed;
+    cursor: pointer;
+    .bookNameTip {
+      color: #409eff;
+      font-family: cursive;
+      font-weight: 700;
+      font-size: 20px;
+      padding-right: 5px;
+    }
+    .book-mark-left {
+      width: 225px;
+      height: 420px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: rgba(0, 0, 0, 0.3) solid 2px;
+      border-radius: 5px;
+      position: absolute;
+      text-align: center;
+      left: 10px;
+      margin-top: 25px;
+      .saveBookBtn {
+        display: block;
+        width: 100px;
+        height: 35px;
+        font-size: 16px;
+        line-height: 35px;
+        color: #fff;
+        background-color: #5daf34;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        margin-top: 20px;
+        margin-left: 65px;
+        cursor: pointer;
+
+      }
+      .bookMarkName {
+        margin-top: 5px;
+        display: inline-block;
+        width: 200px;
+        height: 35px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+      }
+    }
+    .book-mark-right {
+      width: 225px;
+      height: 420px;
+      background-color: rgba(0, 0, 0, 0.1);
+      border: rgba(0, 0, 0, 0.3) solid 2px;
+      border-radius: 5px;
+      position: absolute;
+      right: 10px;
+      margin-top: 25px;
+      .bookMarks {
+        margin-top: 5px;
+        .bookItem {
+          color: rgb(0, 0, 0);
+          list-style: none;
+          font-family: "微软雅黑 Regular";
+          width: 155px;
+          height: 35px;
+          text-align: center;
+          line-height: 35px;
+          border-radius: 5px;
+          border: 1px solid #c0c0c0;
+          margin-left: 35px;
+          background-color: rgba(255, 255, 255, .8);
+        }
+        .bookItem:hover {
+          background-color: #1aa8d7;
+        }
+      }
+    }
+    .closeBookBtn {
+      position: absolute;
+      top: 450px;
+      display: block;
+      width: 100px;
+      height: 35px;
+      line-height: 35px;
+      font-size: 16px;
+      color: #fff;
+      background-color: #f78989;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      margin-left: 200px;
+      margin-top: 5px;
+      cursor: pointer;
+    }
+  }
+}
+

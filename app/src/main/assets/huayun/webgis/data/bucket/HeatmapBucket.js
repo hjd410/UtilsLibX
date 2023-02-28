@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/data/bucket/HeatmapBucket",["./CircleBucket","../../gl/dataTransfer"],function(_1,_2){var _3=(function(_4){function _3(){_4.apply(this,arguments);};if(_4){_3.__proto__=_4;}_3.prototype=Object.create(_4&&_4.prototype);_3.prototype.constructor=_3;return _3;}(_1));_2.register("HeatmapBucket",_3,{omit:["layers"]});return _3;});

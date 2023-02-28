@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/support/style/TransitionablePropertyValue",["./PropertyValue","./TransitioningPropertyValue","../../../utils/utils"],function(_1,_2,_3){var _4=function _4(_5){this.property=_5;this.value=new _1(_5,undefined);};_4.prototype.transitioned=function transitioned(_6,_7){return new _2(this.property,this.value,_7,_3.extend({},_6.transition,this.transition),_6.now);};_4.prototype.untransitioned=function untransitioned(){return new _2(this.property,this.value,null,{},0);};return _4;});

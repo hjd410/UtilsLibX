@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/event/CanvasKeyBoardEvent",["./CanvasInputEvent"],function(_1){function _2(_3,_4,_5,_6,_7,_8,_9,_a){_1.call(this,_3,_8,_9,_a);this.key=_4;this.keyCode=_5;this.repeat=_6;};if(_1){_2.__proto__=_1;}_2.prototype=Object.create(_1&&_1.prototype);_2.prototype.constructor=_2;return _2;});

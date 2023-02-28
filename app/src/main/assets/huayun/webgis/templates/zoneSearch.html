@@ -1,0 +1,50 @@
+<div data-dojo-attach-point ="pathContainerNode">
+    <div class="searchTop">
+        <span class="titleIcon">位置搜索</span>
+        <button class="closeIcon" data-dojo-attach-event="onclick:closeSearchDialog"></button>
+    </div>
+    <div class="navs">
+        <span class="tabGap"></span>
+        <span class="tabBtn myselect" data-dojo-attach-point ="seaBtnNode" data-dojo-attach-event="onclick:selectSeaTab">搜索</span>
+        <span class="tabBtn" data-dojo-attach-point="pathBtnNode" data-dojo-attach-event="onclick:selectPathTab">路径</span>
+    </div>
+    <div class="tabBtmLine"></div>
+    <div data-dojo-type="dijit/layout/ContentPane" class="tabContainer" data-dojo-attach-point="seaTabNode" style="height: 580px;width:400px;">
+        <div class="typeBtn">
+            <div data-dojo-attach-point="zoneSelect" style="display: inline-block;"></div>
+            <input type="text" data-dojo-attach-point="cnameNode" data-dojo-attach-event="onclick:focusHandle" class="cname"/>
+            <button  class="searchBtn" data-dojo-attach-event="onclick:searchKeyZone">搜索</button>
+        </div>
+        <div class="zoneContainer">
+            <ul data-dojo-attach-point="zoneListNode" data-dojo-attach-event="onclick:zoneListClick"></ul>
+            <div class="pageBtn hidden" data-dojo-attach-point ="pageContainerNode">
+                <button data-dojo-attach-event="onclick:prevPage" class="prePage"></button>
+                <button data-dojo-attach-event="onclick:nextPage" class="nextPage"></button>
+            </div>
+        </div>
+    </div><!--应用模块结束-->
+    <div data-dojo-type="dijit/layout/ContentPane" class="tabContainer hidden" data-dojo-attach-point="pathTabNode" style="height: 580px;width:400px;">
+        <div class="costWrap">
+            <span class="changeBtn" data-dojo-attach-event="onclick:changeCost"></span>
+            <div class="tabCenter">
+                <div>
+                    <input type="text" class="cname startVal" data-dojo-attach-point="startZoneNode" data-dojo-attach-event="onclick:focusHandle"/>
+                    <span data-dojo-attach-event="onclick:getStartCost"></span>
+                </div>
+                <hr style="width:100%;border-color:#eee;"/>
+                <div>
+                    <input type="text" class="cname endVal"  data-dojo-attach-point="endZoneNode" data-dojo-attach-event="onclick:focusHandle"/>
+                    <span data-dojo-attach-event="onclick:getEndCost"></span>
+                </div>
+            </div>
+            <button class="searchCost" data-dojo-attach-event="onclick:searchPath"></button>
+        </div>
+        <div class="pathTab">
+            <div data-dojo-attach-point="totalCostNode"   class="hidden total-cost"></div>
+            <div data-dojo-attach-point="startCostNode" class="hidden cost-title start-cost"></div>
+            <table data-dojo-attach-point="costListNode" class="costList hidden"></table>
+            <table data-dojo-attach-point="addrListNode" data-dojo-attach-event="onclick:getSelectCost" class="costList hidden"></table>
+            <div data-dojo-attach-point="endCostNode" class="hidden cost-title end-cost"></div>
+        </div>
+    </div><!--服务结束-->
+</div>

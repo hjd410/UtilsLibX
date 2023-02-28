@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/facades/TileInfoFacade",["dojo/_base/declare","dojo/request"],function(_1,_2){return _1("com.huayun.facades.TileInfoFacade",null,{constructor:function(){},getTileInfoData:function(_3,_4,_5){var _6=dojoConfig.token;var _7=_6?{"access-key":_6}:{};_2.get(_3,{handleAs:"json",headers:_7}).then(function(_8){_4(_8);},function(_9){_5(_9);});}});});

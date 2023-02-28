@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 
 import com.hjd.apputils.R;
-import com.wang.avi.AVLoadingIndicatorView;
 
 
 /**
@@ -25,7 +24,6 @@ public class LoadingDialog extends AlertDialog {
 
     private Context context;
     private static LoadingDialog loadingDialog;
-    private AVLoadingIndicatorView avi;
 
     enum style {
 
@@ -65,7 +63,6 @@ public class LoadingDialog extends AlertDialog {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         this.setContentView(R.layout.loading);
-        avi = (AVLoadingIndicatorView) this.findViewById(R.id.loading);
     }
 
 

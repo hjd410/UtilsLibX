@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/symbols/SimpleMarkSymbol",["dojo/_base/declare","./BaseSymbol"],function(_1,_2){return _1("com.huayun.webgis.symbols.SimpleMarkSymbol",[_2],{constructor:function(_3){this.type="circle";this.size="10";this.color="#2883b8";this.outline=null;this.fixedSize=false;this.xoffset=0;this.yoffset=0;_1.safeMixin(this,_3);},clone:function(){}});});

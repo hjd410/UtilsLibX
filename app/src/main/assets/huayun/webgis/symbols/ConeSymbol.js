@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/symbols/ConeSymbol",["../utils/Color"],function(b){return function(c){var a=b.parse(c.topColor);this.topColor=[a.r,a.g,a.b,a.a];a=b.parse(c.bottomColor);this.bottomColor=[a.r,a.g,a.b,a.a];this.uniforms={}}});

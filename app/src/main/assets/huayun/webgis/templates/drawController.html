@@ -1,0 +1,70 @@
+<div class="${baseClass}" style="pointer-events: all;">
+    <!--<div class="collapse-btn collapse-down tool" id="openTl">工具<span class="arrowText" id="arrowText"></span></div>
+    -->
+    <div class="tool" id="openTl">工具<span class="arrowText" id="arrowText"></span></div>
+    <ul id="drawSelectWrap" class="drawSelect">
+        <li class="toolGroupLabel">
+           绘制工具
+        </li>
+
+        <li class="drawWrap" data-dojo-attach-point="drawDotNode" data-dojo-attach-event="onclick:drawDot">
+            <div class="drawDot">画点
+            </div>
+        </li>
+        <li class="drawWrap" data-dojo-attach-point="drawLineNode" data-dojo-attach-event="onclick:drawLine">
+            <div class="drawLine">画线</div>
+        </li>
+        <li class="drawWrap" data-dojo-attach-point="drawCircleNode"
+            data-dojo-attach-event="onclick:drawCircle">
+            <div class="drawCircle" >
+                画圆
+            </div>
+        </li>
+        <li class="drawWrap"  data-dojo-attach-point="drawPolyNode"
+            data-dojo-attach-event="onclick:drawPolygon">
+            <div class="drawPoly">
+                画多边形
+            </div>
+        </li>
+        <li class="drawWrap" data-dojo-attach-point="drawSphereNode"
+            data-dojo-attach-event="onclick:drawSphere">
+            <div class="drawSphere">
+                画球
+            </div>
+        </li>
+        <li class="toolGroupLabel">
+            测量工具
+        </li>
+
+        <li class="drawWrap"  data-dojo-attach-point="measureLineNode" data-dojo-attach-event="onclick:measureLine">
+            <div class="drawLine">距离
+            </div>
+        </li>
+
+        <li class="drawWrap" data-dojo-attach-point="measurePolyNode"
+            data-dojo-attach-event="onclick:measurePoly">
+            <div class="drawPoly" >
+                面积
+            </div>
+        </li>
+
+        <li class="drawWrap" data-dojo-attach-point="measureAngleNode"
+            data-dojo-attach-event="onclick:measureAngle">
+            <div class="drawLine" >
+                角度
+            </div>
+        </li>
+
+        <li class="drawWrap">
+            <div class="clearDraw" data-dojo-attach-event="onclick:clearGraphic">清空</div>
+        </li>
+
+        <li class="drawWrap">
+            <div class="clearDraw" data-dojo-attach-event="onclick:rectSelect">矩形选择</div>
+        </li>
+
+        <li class="drawWrap">
+            <div class="clearDraw" data-dojo-attach-event="onclick:polygonSelect">多边形选择</div>
+        </li>
+    </ul>
+</div>

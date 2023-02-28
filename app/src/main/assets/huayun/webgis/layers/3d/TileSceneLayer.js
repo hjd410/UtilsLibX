@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/3d/TileSceneLayer",["dojo/_base/declare","./SceneLayer","../../request"],function(_1,_2,_3){return _1("com.huayun.webgis.layers.3d.TileSceneLayer",[_2],{url:null,tileInfo:null,fullExtent:null,fetchTile:function(_4){return _3(_4,{responseType:"image",allowImageDataAccess:false});},refresh:function(){}});});

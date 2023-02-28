@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/nls/hi/basemaps",{streets:"सड़कें",satellite:"कल्पना",hybrid:"लेबल सहित चित्रकारी",terrain:"लेबल सहित भू-भाग",topo:"स्थलाकृतिक",gray:"हल्का धूसर कैनवस","dark-gray":"गहरा धूसर कैनवस",oceans:"समुद्र","national-geographic":"National Geographic (नेशनल ज्योग्राफिक)",osm:"OpenStreetMap","streets-night-vector":"विश्व सड़क मानचित्र (रात्रि)","streets-relief-vector":"विश्व सड़क मानचित्र (उभार सहित)","streets-navigation-vector":"विश्व नेविगेशन मानचित्र"});

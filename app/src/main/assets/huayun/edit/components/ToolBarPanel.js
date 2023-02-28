@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/edit/components/ToolBarPanel",[],function(){this.buttonList=["开始","停止","选择","删除","移动","旋转"];function _1(_2){this.container=_2.container;this.buttonSelectedHook=_2.buttonSelectedHook;this.container.addEventListener("click",function(_3){this.buttonSelectedHook.call(this,_3.target.innerText);}.bind(this));this.createButton();};_1.prototype.createButton=function(){for(var i=0;i<buttonList.length;i++){var _4=buttonList[i];var _5=document.createElement("button");_5.className="tool-bar_btn";_5.innerText=_4;this.container.appendChild(_5);}};return _1;});

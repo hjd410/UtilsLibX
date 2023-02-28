@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/action/Screenshot",["dojo/_base/declare","dojo/topic","./MapAction"],function(_1,_2,_3){return _1("com.huayun.webgis.action.Screenshot",[_3],{view:null,canvas:null,constructor:function(_4){_1.safeMixin(_4);this.view=_4.view;},doAction:function(){this.saveImage();},saveImage:function(){var a=document.createElement("a");var _5=new MouseEvent("click");a.download="HY-Map.jpg";this.view.addTask(function(){a.href=this.view._gl.canvas.toDataURL("image/png");a.dispatchEvent(_5);}.bind(this));}});});

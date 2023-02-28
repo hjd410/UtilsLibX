@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/gl/shaders/cone",["exports","../../webgis/data/uniform"],function(a,b){a.coneVS="attribute vec3 a_pos;\nattribute vec4 a_color;\n\nvarying vec4 v_color;\nuniform mat4 u_matrix;\n\nvoid main() {\n    gl_Position \x3d u_matrix * vec4(a_pos, 1.0);\n    v_color \x3d a_color;\n}\n";a.coneFS="precision mediump float;\nvarying vec4 v_color;\n\nvoid main() {\n    gl_FragColor \x3d v_color;\n}";a.coneUniforms=function(a,c){return{u_matrix:new b.UniformMatrix4f(a,c.u_matrix)}}});

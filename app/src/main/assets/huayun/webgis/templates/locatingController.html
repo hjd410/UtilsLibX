@@ -1,0 +1,34 @@
+<ul class="${baseClass}" style="width:${width}px;pointer-events: all;">
+    <li class="locating-item">
+        <label class="item-label" for="point">坐标(点)</label>
+        <input id="point" type="text" value="${inputDefaultValue.point}">
+        <span class="btn locate-btn" data-dojo-attach-event="onclick:locateOnPoint"></span>
+        <span class="btn clear-btn" data-dojo-attach-event="onclick:clearLocating"></span>
+    </li>
+    <li class="locating-item">
+        <label class="item-label" for="points">坐标(多点)</label>
+        <input id="points" type="text" value="${inputDefaultValue.points}">
+        <span class="btn locate-btn" data-dojo-attach-event="onclick:locateOnPoints"></span>
+        <span class="btn clear-btn" data-dojo-attach-event="onclick:clearLocating"></span>
+    </li>
+
+    <li class="locating-item">
+        <label class="item-label" for="line">坐标(线)</label>
+        <input id="line" type="text" value="${inputDefaultValue.line}" >
+        <span class="btn locate-btn" data-dojo-attach-event="onclick:locateOnLineString"></span>
+        <span class="btn clear-btn" data-dojo-attach-event="onclick:clearLocating"></span>
+    </li>
+    <!--
+   <li class="locating-item">
+       <label class="item-label" for="lines">坐标(多线)</label><input id="lines" type="text" value="${inputDefaultValue.lines}">
+       <span class="btn" data-dojo-attach-event="onclick:locateOnLinesString">定位</span><span class="btn"
+                                                                                                data-dojo-attach-event="onclick:clearLocating">清除</span>
+   </li>
+   -->
+    <li class="locating-item">
+        <label class="item-label">坐标(面)</label>
+        <input id="plane" type="text" value="${inputDefaultValue.plane}">
+        <span class="btn locate-btn" data-dojo-attach-event="onclick:locateInPolygon"></span>
+        <span class="btn clear-btn" data-dojo-attach-event="onclick:clearLocating"></span>
+    </li>
+</ul>

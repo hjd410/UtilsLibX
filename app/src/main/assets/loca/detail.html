@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html
+        class="um landscape min-width-240px min-width-320px min-width-480px min-width-768px min-width-1024px">
+
+<head>
+    <title></title>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="target-densitydpi=device-dpi, width=device-width, initial-scale=1, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-box.css">
+    <link rel="stylesheet" href="css/ui-base.css">
+    <link rel="stylesheet" href="css/ui-color.css">
+    <link rel="stylesheet" href="css/uap.icon.css">
+    <link rel="stylesheet" href="css/uap.control.css">
+    <link rel="stylesheet" href="css/detail.css">
+
+    <script src="js/jquery-1.10.2.js"></script>
+    <script src="js/vue.min.js"></script>
+    <script src="js/mui.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/mui.ajax.js" type="text/javascript" charset="utf-8"></script>
+    <script src="js/layer/layer.js"></script>
+</head>
+
+<body>
+<div class="uh ub ub-pc ub-ac ub-f1 bc-head" data-control="HEADER"
+     id="Header">
+
+    <!-- <div class="fa fa-1g ub-img1 " id="Icon">
+         <img id="back" class="returnPng" src="./css/img/returnNoline.png">
+     </div>-->
+    <div>
+        <h1 class="ut ub-f1 ulev-3 ut-s tx-c" tabindex="0" id="title_head">用电地址详情</h1>
+    </div>
+
+    <!-- <div class="fa fa-1g ub-img1 " id="More">
+        <img id="back" class="returnPng" src="./css/img/icon-more.png">
+    </div> -->
+
+</div>
+<div class="" data-control="CONTENT" id="ScrollContent_9F1znO">
+    <div class="scrollbox">
+        <!--       <div class="box_bounce ub ub-ver ub-pc">
+                <div class="ub-f1">
+                </div>
+                <div class="bounce_status">下拉更新......</div>
+                <div class="bounce_status">松手更新......</div>
+                <div class="bounce_status">更新中......</div>
+            </div> -->
+        <div class="" data-control="CUSTOMLISTVIEW"
+             id="CustomListView_fZKxdw">
+            <ul data-bind="collection:$collection">
+                <li data-control-scope="CustomListView_fZKxdw" mvvm-scope="" class="li">
+                    <div class="ub" data-control="BOX" id="Box_HbE8l3">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_eZ3jZr">户号：</div>
+                        <div data-control="TEXT" class="formatter" id="Text_IHb9o9"></div>
+                    </div>
+                    <hr>
+                    <div class="ub" data-control="BOX" id="Box_HgBllt">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_ouJWLk">客户名称：</div>
+                        <div data-control="TEXT" class="formatter" id="Text_KtueQw"></div>
+                    </div>
+                    <div class="ub" data-control="BOX" id="Box_appVbO">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_Wi1p6l">地址类型：</div>
+                        <div id="addressSelect" class="text"></div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_PChoVB">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_V7VTau">省：</div>
+                        <div class="select uba bc-border bc-text ub-f2 gui-user-tite-30 formatter"
+                             data-control="SELECT" id="Select_OVDYIX">
+                            <div class="text"></div>
+                            <select selectedindex="0" data-control-scope="Select_OVDYIX" id="proviceSelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                        <div data-control="TEXT" class="gui-user-tite-30 fs9 " id="Text_CPbFFj">市：</div>
+                        <div class="select uba bc-border bc-text ub-f2 gui-user-tite-20 formatter"
+                             data-control="SELECT" id="Select_BRnsHw">
+                            <div class="text"></div>
+                            <select class="change" selectedindex="0" data-control-scope="Select_BRnsHw" id="citySelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_tyD9lM">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_gM2kyM">区县：</div>
+                        <div class="select uba bc-border bc-text ub-f2 gui-user-tite-30 formatter"
+                             data-control="SELECT" id="Select_T9p8Ba">
+                            <div class="text"></div>
+                            <select class="change" v-model="countrySelected" id="areaSelect"
+                                    onmousedown="javascript:return false;">
+                            </select>
+                        </div>
+                        <!--邮编 部分：-->
+                        <div data-control="TEXT" class="gui-user-tite-30 fs9" id="Text_dmxiTQ"></div>
+                        <div data-control="TEXT" class="gui-user-tite-20 ub-f2 formatter" id="Text_pHS8hr"></div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_YhpwhV">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_U0FDnD">街道：</div>
+                        <div class="select uba bc-border bc-text ub-f4 formatter"
+                             data-control="SELECT" id="Select_MKCC83">
+                            <div class="text"></div>
+                            <select class="change" selectedindex="0" onmousedown="javascript:return false;"
+                                    id="streetSelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="ub ma_top" data-control="BOX" id="Box_m6QHK4">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_5Zi7MW">社区：</div>
+                        <div class="select uba bc-border bc-text ub-f4 formatter"
+                             data-control="SELECT" id="Select_tgVGlk">
+                            <div class="text"></div>
+                            <select class="change" selectedindex="0" onmousedown="javascript:return false;"
+                                    id="neighborhoodSelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_zD8Rwk">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_wiLfen">道路：</div>
+                        <div class="select uba bc-border bc-text ub-f4 formatter"
+                             data-control="SELECT" id="Select_tLg4TP">
+                            <div class="text"></div>
+                            <select class="change" selectedindex="0" onmousedown="javascript:return false;"
+                                    id="roadSelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_1B9Cpp">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_QQQS7t">小区：</div>
+                        <div class="select uba bc-border bc-text ub-f4 formatter"
+                             data-control="SELECT" id="Select_ryObwX">
+                            <div class="text"></div>
+                            <select class="change" selectedindex="0" onmousedown="javascript:return false;"
+                                    id="smallSelect">
+                                <option value="0"></option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_wZiRcL">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_oDahja">门牌号：</div>
+                        <div class="uinput ub bc-border uba ub-f4 formatter" data-control="INPUT"
+                             id="Input_XUDwH7">
+                            <input class="" placeholder="" type="text" class="ub-f1"
+                                   data-control-scope="Input_XUDwH7" id="doorOrder">
+                            <!--onblur="autoCompleted('citySelect')"-->
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_btdPPA">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_c3n77e">地标：</div>
+                        <div class="uinput ub bc-border uba ub-f4 formatter" data-control="INPUT"
+                             id="Input_qEMB6E">
+                            <input placeholder="" type="text" class="ub-f1"
+                                   data-control-scope="Input_qEMB6E" id="doorSign">
+                        </div>
+                    </div>
+                    <div class="ub ma_top" data-control="BOX" id="Box_AFsP2X">
+                        <div data-control="TEXT" class="gui-user-tite fs9" id="Text_dxbRHC">用电地址：</div>
+                        <div class="uinput ub bc-border uba ub-f4 formatter" data-control="INPUT"
+                             id="Input_P7BbQb">
+                            <input placeholder="" type="text" class="ub-f1"
+                                   data-control-scope="Input_P7BbQb" id="address">
+                        </div>
+                    </div>
+                    <div class="msg_footer">*用电地址不宜过长，请自行删减*</div>
+
+
+                </li>
+            </ul>
+        </div>
+
+    </div>
+</div>
+
+<div id="div-btn">
+    <input id="btnchange" type="button" class="button" value="修 改">
+</div>
+
+
+<script src="js/detail.js">
+
+</script>
+
+
+<script type="text/javascript">
+
+
+    // function autoCompleted(e) {
+    //     var arr = ['citySelect', 'areaSelect', 'streetSelect', 'neighborhoodSelect', 'roadSelect', 'smallSelect', 'doorOrder'];
+    //     // 返回arr所用
+    //     var index = arr.indexOf(e);
+    //     //存放地址信息
+    //     var addInfo = '';
+    //     //判断所有是否存在
+    //     if (index >= 0) {
+    //         for (var i = 0; i < arr.length; i++) {
+    //             //首先获取类型 判断是什么类型
+    //             if (arr[i] == 'doorOrder') {
+    //
+    //                 var str = $('#' + arr[i] + '').val();
+    //
+    //             } else {
+    //
+    //                 var str = $('#' + arr[i] + '').find("option:selected").text();
+    //             }
+    //             addInfo += str;
+    //         }
+    //         //alert(addInfo);
+    //         //动态添值
+    //         $("#address").val(addInfo);
+    //
+    //     }
+    // }
+
+
+</script>
+</body>
+
+</html>

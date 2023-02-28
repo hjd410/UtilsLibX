@@ -1,0 +1,227 @@
+//{
+//  "total": "",
+//  "code": "",
+//  "msg": "",
+//  "rows": [{
+//    "deptId": "",
+//    "userId": "",
+//    "userName": "",
+//    "nikeName": "",
+//    "email": "",
+//    "phonenumber": "",
+//    "sex": "",
+//    "avatar": "",
+//    "password": "",
+//    "salt": "",
+//    "status": "",
+//    "delFlag": "",
+//    "loginIp": "",
+//    "loginDate": "",
+//    "createBy": "",
+//    "createTime": "",
+//    "updateBy": "",
+//    "updateTime": "",
+//    "remark": "",
+//    "dept": ""
+//  }]
+//}
+
+//{
+//  "total": "",
+//  "code": "",
+//  "msg": "",
+//  "rows": [
+//    {
+//      "id": "",
+//      "status": "",
+//      "sid": "",
+//      "name": "",
+//      "version": "",
+//      "surl": "",
+//      "filePath": "",
+//      "logoPath": "",
+//      "vendor": "",
+//      "createBy": "",
+//      "createTime": "",
+//      "updateBy": "",
+//      "updateTime": "",
+//      "remark": "",
+//      "isDel": "",
+//      "fileSize": "",
+//      "fileName": ""
+//    }
+//  ]
+//}
+
+//{
+//  "total": "",
+//  "code": "",
+//  "msg": "",
+//  "rows": [
+//    {
+//      "id": "",
+//      "readerId": "",
+//      "cycle": "",
+//      "remark": "",
+//      "createBy": "",
+//      "createTime": "",
+//      "updateBy": "",
+//      "updateTime": ""
+//    }
+//  ]
+//}
+
+{
+  "total": "",
+  "code": "",
+  "msg": "",
+  "rows": [
+    {
+      "id": "",
+      "status": "",
+      "operator": "",
+      "time": ""
+    }
+  ]
+}
+
+//{
+//  "configId": "",
+//  "configName": "",
+//  "configKey": "",
+//  "configValue": "",
+//  "configType": "",
+//  "createTime": "",
+//  "updateBy": "",
+//  "createTime": "",
+//  "updateTime": "",
+//  "remark": ""
+//}
+
+//{
+//  "code": "",
+//  "msg": "",
+//  "total": "",
+//  "smspLinkTrackList": [
+//    {
+//      "business": "",
+//      "destNum": "",
+//      "operator": "",
+//      "sat": "",
+//      "dat": "",
+//      "tat": "",
+//      "rat": "",
+//      "countNum": ""
+//    }
+//  ],
+//  "row": [
+//    {
+//      "id": "",
+//      "jobNumber": "",
+//      "status": "",
+//      "readerName": "",
+//      "readerAddress": "",
+//      "deptNo": "",
+//      "readerNum": "",
+//      "createBy": "",
+//      "updateBy": "",
+//      "remark": "",
+//      "createTime": "",
+//      "updateTime": ""
+//    }
+//  ]
+//}
+
+
+//{
+//  "id": "",
+//  "loginFailCount": "",
+//  "lockTime": "",
+//  "updateTime": ""
+//}
+
+//{
+//  "total": "",
+//  "code": "",
+//  "msg": "",
+//  "rows": [
+//    {
+//      "id": "",
+//      "phoneNum": "",
+//      "phoneName": "",
+//      "serviceProvider": "",
+//      "textContent": "",
+//      "orgNo": "",
+//      "planSendTime": "",
+//      "sendStatus": "",
+//      "isInprovince": "",
+//      "planSendTaskId": "",
+//      "groupId": "",
+//      "msgType": "",
+//      "createBy": "",
+//      "createTime": "",
+//      "updateBy": "",
+//      "updateTime": "",
+//      "remark": ""
+//    }
+//  ]
+//}
+
+//{
+//  "total": "",
+//  "code": "",
+//  "msg": "",
+//  "pageList": [
+//    {
+//      "id": "",
+//      "business": "",
+//      "ruleId": "",
+//      "priority": "",
+//      "params": "",
+//      "coe": ""
+//    }
+//  ],
+//  "businessList": [
+//    {
+//      "id": "",
+//      "status": "",
+//      "code": "",
+//      "name": "",
+//      "appId": "",
+//      "type": "",
+//      "receiptTopic": "",
+//      "level": "",
+//      "isWhiteList": "",
+//      "remark": "",
+//      "createTime": "",
+//      "updateTime": ""
+//    }
+//  ],
+//  "ruleList": [
+//    {
+//      "id": "",
+//      "name": "",
+//      "rule": "",
+//      "type": ""
+//    }
+//  ]
+//}
+
+
+//{
+//  "user": "",
+//  "roles": "",
+//  "permissions": [
+//    {
+//      "token": "",
+//      "userid": "",
+//      "username": "",
+//      "loginTime": "",
+//      "expireTime": "",
+//      "ipaddr": "",
+//      "permissions": "",
+//      "roles": "",
+//      "sysUser": ""
+//    }
+//  ]
+//}

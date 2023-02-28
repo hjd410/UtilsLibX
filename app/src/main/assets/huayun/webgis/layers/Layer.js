@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/Layer",[],function(){function _1(_2){_2=_2===undefined?{}:_2;this.id=_2.id||"layer";this.opacity=_2.opacity===undefined?1:_2.opacity;this.visible=_2.visible===undefined?true:_2.visible;this.selectEnabled=_2.selectEnabled===undefined?true:_2.selectEnabled;this.controlEnabled=_2.controlEnabled===undefined?true:_2.controlEnabled;};_1.prototype.createLayerView=function(_3,_4){throw new Error("不能调用基类的createLayerView方法");};_1.prototype.refresh=function(){};_1.prototype.setVisible=function(){};return _1;});

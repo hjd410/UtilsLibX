@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/datasource/JsonDataSource",["exports","require","dojo/request","../Feature","../geometry/Point"],function(_1,_2,_3,_4,_5){_1.getData=function(_6){return _3.get(_6,{handleAs:"json"}).then(function(_7){var fs=_7.features;var _8=[];for(var i=0;i<fs.length;i++){var f=fs[i];_8.push(new _4({attribute:null,geometry:new _5(f.point.x,f.point.y,f.point.z),type:""}));}return _8;});};});

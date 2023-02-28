@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/widget/components/buttons/BaseButton",["dojo/_base/declare","dijit/form/Button"],function(_1,_2){return _1("com.huayun.webgis.widget.components.buttons.BaseButton",[_2],{action:null,condition:"all",id:"",label:"",toolTip:"",type:"normal",constructor:function(_3){this.action=null;this.condition="all";this.id="";this.label="";this.toolTip="";this.type="normal";this.toolTipNode=null;_1.safeMixin(this,_3);},postCreate:function(){this.inherited(arguments);this.domNode.title=this.params["tool-tip"];}});});

@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/support/AttributeCompression",["exports"],function(_1){function _2(_3){return (_3>>1)^(-(_3&1));};function _4(_5,_6,_7){var _8=_5.length;var u=0;var v=0;var _9=0;for(var i=0;i<_8;++i){u+=_2(_5[i]);v+=_2(_6[i]);_5[i]=u;_6[i]=v;if(_7){_9+=_2(_7[i]);_7[i]=_9;}}};_1.zigZagDeltaDecode=_4;});

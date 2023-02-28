@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/data/IndexDatatype",["exports"],function(_1){var _2=64*1024;_1.createTypedArray=function(_3,_4){if(_3>=_2){return new Uint32Array(_4);}return new Uint16Array(_4);};});

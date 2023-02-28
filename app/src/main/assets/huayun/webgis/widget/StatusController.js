@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/widget/StatusController",["dojo/_base/declare","dojo/dom","dojo/topic","../layerContainer/LayerContainer","../layerContainer/SceneContainer"],function(_1,_2,_3,_4,_5){return _1("com.huayun.webgis.layercontainer.SceneContainer",[_4,_5],{});});

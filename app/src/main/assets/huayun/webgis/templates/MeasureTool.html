@@ -1,0 +1,15 @@
+<div class="${baseClass}" style="pointer-events: all;">
+    <div id="${toolBtnId}" class="tool">测量<span id=${selectArrowId} class="arrowText"></span></div>
+    <ul id="${selectWrapId}" class="measureSelect">
+        <li class="drawWrap">
+            <div class="drawLine" data-dojo-attach-point="measureLineNode" data-dojo-attach-event="onclick:measureLine">线段
+            </div>
+        </li>
+        <li class="drawWrap">
+            <div class="drawPoly" data-dojo-attach-point="measureAreaNode"
+                 data-dojo-attach-event="onclick:measureArea">
+                面积
+            </div>
+        </li>
+    </ul>
+</div>

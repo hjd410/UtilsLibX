@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/symbols/CubeSymbol",["../utils/Color"],function(_1){function _2(_3){var _4=_1.parse(_3.color||"#FFF");this.color=[_4.r,_4.g,_4.b,_4.a];this.uniforms={"u_device_pixel_ratio":1,"u_size":1,"u_opacity":1,"u_color":this.color};};return _2;});

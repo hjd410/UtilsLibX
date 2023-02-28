@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/geometry/Circle",[],function(){function _1(_2){this.type="circle";if(_2){this.center=_2.center;this.radius=_2.radius||10;}};_1.prototype.setCenter=function(_3){this.center=_3;};_1.prototype.setRadius=function(_4){this.radius=_4;};_1.prototype.refresh=function(){};return _1;});

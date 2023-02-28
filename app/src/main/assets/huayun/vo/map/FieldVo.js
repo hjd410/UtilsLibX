@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/vo/map/FieldVo",["../../util/JSONFormatterUtil"],function(_1){function _2(_3){this.name="";this.alias="";this.defaultValue="";var _4=_1.formatterKey(_3);for(var _5 in _4){if(_4.hasOwnProperty(_5)){this.parseStyle(_5,_4[_5]);}}};_2.prototype.parseStyle=function(_6,_7){if(Object.prototype.toString.call(_7)==="[object String]"){this[_6]=_7;}else{if(Object.prototype.toString.call(_7)==="[object Object]"){this[_6]=_1.formatterKey(_7);}}};return _2;});

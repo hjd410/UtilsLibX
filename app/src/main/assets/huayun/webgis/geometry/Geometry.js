@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/geometry/Geometry",[],function(){function _1(){this.extent=null;this.spatialReference=null;this.type="";this.hasM=false;this.hasZ=false;};_1.prototype.clone=function(){};_1.prototype.update=function(){};return _1;});

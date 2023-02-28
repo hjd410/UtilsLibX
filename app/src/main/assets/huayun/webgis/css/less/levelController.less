@@ -1,0 +1,64 @@
+///******************************************************
+//            地图层级控制功能的所有样式
+// ******************************************************/
+.levelController {
+  width: 26px;
+  background-color: transparent;
+  font-size: 14px;
+  color: lightskyblue;
+  text-align: center;
+
+  .levelController-box {
+    /*position: relative;
+    width: 26px;
+    height: 100%;*/
+
+    .level-add-btn {
+      width: 26px;
+      height: 26px;
+      background: @levelAdd no-repeat center;
+      background-color: #fff;
+      border-top-left-radius: 8px;
+      border-top-right-radius: 8px;
+      cursor: pointer;
+    }
+
+    .level-bg {
+      position: relative;
+      width: 26px;
+      list-style: none;
+
+      .now-level {
+        position: absolute;
+        top: 0;
+        width: 26px;
+        height: 20px;
+        color:white;
+        background-color: lightskyblue;
+        z-index: 999;
+        border-radius: 2px;
+        border: 1px solid slategray;
+        box-sizing: border-box;
+      }
+
+      .level-gradation {
+        width: 10px;
+        margin: 0 auto;
+        border-bottom:1px solid darkgray;
+        list-style: none;
+        cursor: pointer;
+        box-sizing: border-box;
+      }
+    }
+
+    .level-sub-btn {
+      width: 26px;
+      height: 26px;
+      background: @levelSub no-repeat center;
+      background-color: #fff;
+      border-bottom-left-radius: 8px;
+      border-bottom-right-radius: 8px;
+      cursor: pointer;
+    }
+  }
+}

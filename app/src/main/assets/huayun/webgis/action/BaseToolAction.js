@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/action/BaseToolAction",["dojo/_base/declare","./MapAction"],function(_1,_2){return _1("com.huayun.webgis.action.BaseToolAction",[_2],{constructor:function(_3){},draw:function(_4){},drawEnd:function(){},clear:function(){}});});

@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/layers/support/style/PossiblyEvaluated",[],function(){var _1=function _1(_2){this._properties=_2;this._values=Object.create(_2.defaultPossiblyEvaluatedValues);};_1.prototype.get=function get(_3){return this._values[_3];};return _1;});

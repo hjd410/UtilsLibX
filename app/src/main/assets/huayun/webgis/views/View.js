@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/views/View",[],function(){var _1=function(_2){this.id=_2.id?_2.id:"sceneView";this.container=_2.container;this.map=_2.map;this.extent=_2.extent;this.allLayerViews=[];};_1.prototype.refresh=function(){throw new Error("无法调用基类View的refresh");};return _1;});

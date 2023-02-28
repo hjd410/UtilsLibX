@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/utils/rtlTextPlugin",["exports"],function(_1){var _2=false;var _3=null;var _4=false;var _5={applyArabicShaping:null,processBidirectionalText:null,processStyledBidirectionalText:null,isLoaded:function isLoaded(){return _4||_5.applyArabicShaping!=null;}};});

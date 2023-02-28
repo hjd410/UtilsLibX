@@ -1,0 +1,2 @@
+//>>built
+define("com/huayun/webgis/action/MapPanAction",["dojo/_base/declare","dojo/dom-class","./MapAction"],function(_1,_2,_3){return _1("com.huayun.webgis.action.MapPanAction",[_3],{constructor:function(_4){_1.safeMixin(_4);this.view=_4.view;},doAction:function(){this.view.panEnabled=true;_2.remove(this.view.domNode,"draw-cursor-style");}});});
