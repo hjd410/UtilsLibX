@@ -7,11 +7,14 @@ import android.content.pm.PackageManager;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.util.Log;
 import android.webkit.ValueCallback;
 import android.webkit.WebView;
 import android.widget.LinearLayout;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.RequiresApi;
 import androidx.core.app.ActivityCompat;
 import androidx.webkit.ProxyConfig;
@@ -61,7 +64,7 @@ import java.util.concurrent.TimeUnit;
  */
 public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
     private AgentWeb web;
-    private String html = "file:///android_asset/www/index.html";
+    private String html = "file:///android_asset/index.html";
     List<String> list = new ArrayList<>();
     private String keyAES = "iVc5Q3l7eugbv0514u";
     private String keyStore = "yGBoxfh2Ls85vvvA3doCx6_GcIQTpIGsfzPVaNaHebxanvI5LioZ0UaTqwn2i0bN";
@@ -76,65 +79,89 @@ public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
                 .setWebViewClient(webViewClient)
                 .setOpenOtherPageWays(DefaultWebClient.OpenOtherPageWays.DISALLOW)
                 .createAgentWeb()
-                .ready().go(html);
-        web.getAgentWebSettings().getWebSettings().setJavaScriptEnabled(true);
+                .ready()
+                .go(html);
+        web.getAgentWebSettings()
+                .getWebSettings()
+                .setJavaScriptEnabled(true);
 
-//        if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
-//            ToastUtils.showShort("设置代理");
-//            ProxyConfig proxyConfig = new ProxyConfig.Builder()
-//                    .addProxyRule("http://192.168.0.22:18080")
-//                    .addDirect().build();
-//            ProxyController.getInstance().setProxyOverride(proxyConfig, new Executor() {
-//                @Override
-//                public void execute(Runnable command) {
-//                    //do nothing
-//                    Log.i("Info", "代理设置完成");
-//                }
-//            }, new Runnable() {
-//                @Override
-//                public void run() {
-//                    Log.w("Wanning", "WebView代理 改变");
-//                }
-//            });
-//        } else {
-//
-//            ToastUtils.showShort("代理设置失败");
-//        }
+        StackTraceElement[] stackTrace = new Throwable().getStackTrace();
+        StackTraceElement targetElement = stackTrace[4];
+        Log.e("---1", targetElement.getClassName());
+        Log.e("--2-", targetElement.getMethodName());
+        Log.e("--3-", targetElement.getFileName());
+        Log.e("--4-", targetElement.getLineNumber() + "");
+        showLoadingDialog();
+
+
+        int i = 20;
+        if (i != 200 & i != 10) {
+            ToastUtils.showShort("停止");
+            return;
+        } else {
+
+            ToastUtils.showShort("chengong");
+        }
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dismissLoading();
+            }
+        }, 2000);
+
+        //        if (WebViewFeature.isFeatureSupported(WebViewFeature.PROXY_OVERRIDE)) {
+        //            ToastUtils.showShort("设置代理");
+        //            ProxyConfig proxyConfig = new ProxyConfig.Builder()
+        //                    .addProxyRule("http://192.168.0.22:18080")
+        //                    .addDirect().build();
+        //            ProxyController.getInstance().setProxyOverride(proxyConfig, new Executor() {
+        //                @Override
+        //                public void execute(Runnable command) {
+        //                    //do nothing
+        //                    Log.i("Info", "代理设置完成");
+        //                }
+        //            }, new Runnable() {
+        //                @Override
+        //                public void run() {
+        //                    Log.w("Wanning", "WebView代理 改变");
+        //                }
+        //            });
+        //        } else {
+        //
+        //            ToastUtils.showShort("代理设置失败");
+        //        }
         String IMEI = "1231231231234";
         if (IMEI.length() < 15) {
             int len = 15 - IMEI.length();
-            LogUtils.d(String.format("%015d",15));
+            LogUtils.d(String.format("%015d", 15));
         }
 
 
-
-        String dataSource = keyStore.length() +" "+
-               "121212121212121212" + keyStore +
-                TimeUtils.date2String(new Date(), "yyyyMMddHHmmss") +
-                SPUtils.getInstance().getString("user");
+        String dataSource =
+                keyStore.length() + " " + "121212121212121212" + keyStore + TimeUtils.date2String(
+                        new Date(),
+                        "yyyyMMddHHmmss") + SPUtils.getInstance()
+                        .getString("user");
 
         String ss = "3Khtc@,7_76.897Zmmk33g0Y8!HIW7f1";
 
         LogUtils.d(dataSource);
         String encoded = AESUtils.encrypt(dataSource, keyAES);
-        LogUtils.d("加密的:  "+AESUtils.encrypt(ss,keyAES));
-        LogUtils.i(AESUtils.decrypt(encoded,keyAES));
+        LogUtils.d("加密的:  " + AESUtils.encrypt(ss, keyAES));
+        LogUtils.i(AESUtils.decrypt(encoded, keyAES));
 
 
-//        /*只执行一次的*/
-//        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
-//        service.schedule(new Runnable() {
-//            @RequiresApi(api = Build.VERSION_CODES.O)
-//            @Override
-//            public void run() {
-//                LogUtils.d("执行线程任务" + LocalTime.now());
-//            }
-//        }, 3, TimeUnit.SECONDS);
+        //        /*只执行一次的*/
+        //        ScheduledExecutorService service = Executors.newScheduledThreadPool(5);
+        //        service.schedule(new Runnable() {
+        //            @RequiresApi(api = Build.VERSION_CODES.O)
+        //            @Override
+        //            public void run() {
+        //                LogUtils.d("执行线程任务" + LocalTime.now());
+        //            }
+        //        }, 3, TimeUnit.SECONDS);
 
     }
-
-
-
 
 
     @Override
@@ -147,7 +174,7 @@ public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
                     .request(new OnPermissionCallback() {
                         @Override
                         public void onGranted(List<String> permissions, boolean all) {
-//
+                            //
                         }
                     });
         } else {
@@ -156,13 +183,18 @@ public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
                     .request(new OnPermissionCallback() {
                         @Override
                         public void onGranted(List<String> permissions, boolean all) {
-//                        if (all) {
-//                            String desp = Environment.getExternalStorageDirectory().getAbsolutePath() + "/wyy/";
-//                            List<File> fileList = FileUtils.listFilesInDir(desp);
-//                            for (int i = 0; i < fileList.size(); i++) {
-//                                list.add(fileList.get(i).getAbsolutePath());
-//                            }
-//                        }
+                            //                        if (all) {
+                            //                            String desp = Environment
+                            //                            .getExternalStorageDirectory()
+                            //                            .getAbsolutePath() + "/wyy/";
+                            //                            List<File> fileList = FileUtils
+                            //                            .listFilesInDir(desp);
+                            //                            for (int i = 0; i < fileList.size();
+                            //                            i++) {
+                            //                                list.add(fileList.get(i)
+                            //                                .getAbsolutePath());
+                            //                            }
+                            //                        }
                         }
                     });
         }
@@ -186,14 +218,18 @@ public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
         for (int i = 0; i < list.size(); i++) {
             StringBuilder builder = new StringBuilder(getJS(OneActivity.this, list.get(i)));
             if (Build.VERSION.SDK_INT <= Build.VERSION_CODES.KITKAT) {
-                web.getWebCreator().getWebView().loadUrl("javascript:" + builder.toString());
+                web.getWebCreator()
+                        .getWebView()
+                        .loadUrl("javascript:" + builder.toString());
             } else {
-                web.getWebCreator().getWebView().evaluateJavascript(builder.toString(), new ValueCallback<String>() {
-                    @Override
-                    public void onReceiveValue(String value) {
-                        Log.i("onReceiveValue", value);
-                    }
-                });
+                web.getWebCreator()
+                        .getWebView()
+                        .evaluateJavascript(builder.toString(), new ValueCallback<String>() {
+                            @Override
+                            public void onReceiveValue(String value) {
+                                Log.i("onReceiveValue", value);
+                            }
+                        });
             }
         }
 
@@ -211,8 +247,9 @@ public class OneActivity extends BaseBindingActivity<ActivityWebBinding> {
         FileInputStream fileInputStream = null;
         ByteArrayOutputStream outputStream = null;
         try {
-//            fileInputStream = new FileInputStream(fileName);
-            inputStream = context.getAssets().open(fileName);//获取assets里的文件
+            //            fileInputStream = new FileInputStream(fileName);
+            inputStream = context.getAssets()
+                    .open(fileName);//获取assets里的文件
             outputStream = new ByteArrayOutputStream();
             int len = 0;
             byte[] buffer = new byte[2048];

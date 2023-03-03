@@ -116,7 +116,6 @@ public abstract class BaseBindingFragment<T extends ViewBinding> extends Fragmen
     @Override
     public void onDestroy() {
         super.onDestroy();
-
     }
 
     /**
@@ -124,16 +123,12 @@ public abstract class BaseBindingFragment<T extends ViewBinding> extends Fragmen
      *
      * @param arguments 接收到的从其他地方传递过来的参数
      */
-    protected void initData(Bundle arguments) {
-
-    }
+    protected void initData(Bundle arguments) {}
 
     /**
      * 初始化View
      */
-    protected void initView() {
-
-    }
+    protected void initView() {}
 
 
     @Override

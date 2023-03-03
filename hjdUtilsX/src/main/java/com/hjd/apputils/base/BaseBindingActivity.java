@@ -22,9 +22,6 @@ import android.widget.EditText;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.FragmentActivity;
-import androidx.lifecycle.Lifecycle;
-import androidx.lifecycle.OnLifecycleEvent;
 import androidx.viewbinding.ViewBinding;
 
 import com.hjd.apputils.custom.LoadingDialog;
@@ -36,16 +33,18 @@ import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
 import java.lang.reflect.Type;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 
+/**
+ * @author hjd
+ */
 public abstract class BaseBindingActivity<T extends ViewBinding> extends AppCompatActivity {
 
     protected T binding;
 
-    private boolean toastAutoCancel = true;
-    public static final Map<String, String> param = new HashMap<>();
+
+    public static final Map<String, String> PARAM = new HashMap<>();
     /**
      * 是否允许旋转屏幕
      */
@@ -63,32 +62,22 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      */
     private long mClickTime;
 
-    /**
-     * 当activity pause时候  toast是否自动取消
-     *
-     * @param toastAutoCancel
-     */
-    public void setToastAutoCancel(boolean toastAutoCancel) {
-        this.toastAutoCancel = toastAutoCancel;
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         Type superClass = getClass().getGenericSuperclass();
-        assert superClass != null;
-        Class<?> aClass = (Class<?>) ((ParameterizedType) superClass).getActualTypeArguments()[0];
         try {
+            Class<?> aClass = (Class<?>) ((ParameterizedType) superClass).getActualTypeArguments()[0];
             Method method = aClass.getDeclaredMethod("inflate", LayoutInflater.class);
             binding = (T) method.invoke(null, getLayoutInflater());
-            setContentView(binding.getRoot());
         } catch (NoSuchMethodException | IllegalAccessException | InvocationTargetException e) {
             e.printStackTrace();
         }
+        setContentView(binding.getRoot());
         /*这行防止软键盘弹出时上面的空间错乱套*/
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        AppManager.getInstance().addActivity(this);
+        AppManager.getInstance()
+                .addActivity(this);
         //这里的context只能是当前的Activity
         loadingDialog = new LoadingDialog(this);
         initView(savedInstanceState);
@@ -105,19 +94,25 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
     @Override
     protected void onStart() {
         super.onStart();
-        Log.e("app", this.getClass().getSimpleName() + " is starting");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is starting");
     }
 
     @Override
     protected void onRestart() {
         super.onRestart();
-        Log.e("app", this.getClass().getSimpleName() + " is restart");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is restart");
     }
 
     @Override
     protected void onResume() {
         super.onResume();
-        Log.e("app", this.getClass().getSimpleName() + " is resumed");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is resumed");
     }
 
     public Activity getActivity() {
@@ -127,26 +122,35 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
     @Override
     public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
         super.onSaveInstanceState(outState);
-        Log.e("app", this.getClass().getSimpleName() + " is onSaveInstanceState");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is onSaveInstanceState");
     }
 
     @Override
     protected void onPause() {
         super.onPause();
-        Log.e("app", this.getClass().getSimpleName() + " is pause");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is pause");
     }
 
     @Override
     protected void onStop() {
         super.onStop();
-        Log.e("app", this.getClass().getSimpleName() + "is stop");
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + "is stop");
     }
 
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        Log.e("app", this.getClass().getSimpleName() + " is destroyed");
-        AppManager.getInstance().finishActivity(this);
+        Log.e("app",
+              this.getClass()
+                      .getSimpleName() + " is destroyed");
+        AppManager.getInstance()
+                .finishActivity(this);
     }
 
 
@@ -185,9 +189,12 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
         boolean result = true;
         // 标记对象
         String tag;
-        if (intent.getComponent() != null) { // 显式跳转
-            tag = intent.getComponent().getClassName();
-        } else if (intent.getAction() != null) { // 隐式跳转
+        // 显式跳转
+        if (intent.getComponent() != null) {
+            tag = intent.getComponent()
+                    .getClassName();
+            // 隐式跳转
+        } else if (intent.getAction() != null) {
             tag = intent.getAction();
         } else {
             return true;
@@ -219,7 +226,14 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
         //两次点击按钮之间的间隔，目前为1000ms
         private static final int MIN_CLICK_DELAY_TIME = 1000;
         private long lastClickTime;
+
+        /**
+         * 防止连点
+         *
+         * @param view 传入view
+         */
         public abstract void onSingleClick(View view);
+
         @Override
         public void onClick(View view) {
             long curClickTime = System.currentTimeMillis();
@@ -231,39 +245,51 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
     }
 
     /**
-     * 无参数打开一个activi
-     *
-     * @author hjd
-     * @title 修改跳转页的标题
+     * @param clazz
+     * @param <T>
      */
-    public static <T> void gotoActivity(Activity context, Class<T> clazz, String... title) {
-        Intent intent = new Intent(context, clazz);
+    public <T> void gotoActivity(Class<T> clazz) {
+        Intent intent = new Intent(getActivity(), clazz);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        if (title != null) {
-            intent.putExtra("titleString", title);
-        }
-        context.startActivity(intent);
+        this.startActivity(intent);
     }
 
     /**
-     * 参数打开一个activi
+     * 携带一个参数打开一个activity
      *
      * @author hjd
-     * @params 参数
+     * {@code @title} 修改跳转页的标题
      */
-    public static <T> void gotoActivity(Activity context, Class<T> clazz,
-                                        HashMap<String, Object> params) {
-        Intent intent = new Intent(context, clazz);
-        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
-        Iterator iterator = params.entrySet().iterator();
-        while (iterator.hasNext()) {
-            Map.Entry entry = (Map.Entry) iterator.next();
-            intent.putExtra((String) entry.getKey(), String.valueOf(entry.getValue()));
+    public <T> void gotoActivity(Class<T> clazz, @Nullable String... title
+    ) {
+        Intent intent = new Intent(getActivity(), clazz);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        if (title != null) {
+            intent.putExtra("title", title);
         }
-        context.startActivity(intent);
+        this.startActivity(intent);
     }
 
-    /*判断字符串是否为空*/
+    /**
+     * 参数打开一个activity
+     *
+     * @author hjd
+     * {@code @params} 参数
+     */
+    public <T> void gotoActivity(Class<T> clazz, Map<String, Object> params
+    ) {
+        Intent intent = new Intent(getActivity(), clazz);
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
+        for (Map.Entry<String, Object> stringObjectEntry : params.entrySet()) {
+            intent.putExtra((String) ((Map.Entry<?, ?>) stringObjectEntry).getKey(),
+                            String.valueOf(stringObjectEntry.getValue()));
+        }
+        this.startActivity(intent);
+    }
+
+    /**
+     * 判断字符串是否为空
+     */
     public boolean isEmp(CharSequence charSequence) {
         return TextUtils.isEmpty(charSequence);
     }
@@ -281,7 +307,8 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * 获取Intent传值
      */
     public String getIntentStringExtra(String key) {
-        String result = this.getIntent().getStringExtra(key);
+        String result = this.getIntent()
+                .getStringExtra(key);
         if (result == null) {
             throw new NullPointerException("参数空指针,请检查传参");
         }
@@ -307,7 +334,7 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * 来判断是否隐藏键盘，因为当用户点击EditText时则不能隐藏
      */
     private boolean isShouldHideKeyboard(View v, MotionEvent event) {
-        if (v != null && (v instanceof EditText)) {
+        if ((v instanceof EditText)) {
             ((EditText) v).setCursorVisible(false);
             int[] l = {0, 0};
             v.getLocationInWindow(l);
@@ -336,7 +363,7 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
     }
     /*     ----------------------------------------------------------------------------------*/
 
-    public LoadingDialog showLoadingDialog() {
+    public void showLoadingDialog() {
         if (loadingDialog == null) {
             loadingDialog = new LoadingDialog(this);
         }
@@ -345,7 +372,6 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
             loadingDialog.setCancelable(false);
             loadingDialog.show();
         }
-        return loadingDialog;
     }
 
     public void dismissLoading() {
