@@ -16,12 +16,8 @@ import com.blankj.utilcode.util.LogUtils;
 import com.blankj.utilcode.util.ZipUtils;
 import com.bumptech.glide.Glide;
 import com.hjd.apputils.base.BaseBindingActivity;
-import com.hjd.apputils.utils.StatusBarUtil;
-import com.hjd.apputils.utils.ToastUtils;
-import com.hjd.test.activity.OneActivity;
 import com.hjd.test.databinding.ActivityMainBinding;
 import com.hjd.test.model.PeopleModel;
-import com.hjd.test.my.LocationObserver;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
@@ -44,7 +40,6 @@ public class MainActivity extends BaseBindingActivity<ActivityMainBinding> {
     MusicService.SimpleBinder bindService;
     PeopleModel model;
 
-    LocationObserver locationObserver;
 
 
     private boolean isBind;
@@ -90,95 +85,12 @@ public class MainActivity extends BaseBindingActivity<ActivityMainBinding> {
                     });
         }
 
-
-        locationObserver = new LocationObserver(this);
-        getLifecycle().addObserver(locationObserver);
     }
 
 
     @Override
     public void initData() {
-        //model = new PeopleModel();
-        //model.setName("JDJJDJDJDJDJJFKFKFFKKFKDJSJSJDKDJFDDJ");
-        //model.setAge(3838);
 
-
-        StatusBarUtil.setRootViewFitsSystemWindows(this, false);
-        //showLoadingDialog();
-        //new Handler().postDelayed(new Runnable() {
-        //    @Override
-        //    public void run() {
-        //        dismissLoading();
-        //    }
-        //}, 5000);
-
-        //Glide.with(this).load("http://p1.pstatp.com/large/166200019850062839d3").into(binding.img);
-
-        //RxHttp.get("")
-        //        .asString()
-        //        .subscribe(s -> {
-        //        }, throwable -> {
-        //        });
-
-        binding.tv.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View view) {
-                //                ToastUtils.showShort("1111");
-                //                File file = new File(Environment.getExternalStorageDirectory()
-                //                .getAbsolutePath() + "/appTest/星辰大海.mp3");
-
-                /*文件解压*/
-                //                try {
-                //                    ZipUtils.unzipFile(new File(file.getPath()), fileDes);
-                //                } catch (IOException e) {
-                //                    e.printStackTrace();
-                //                }
-//                gotoActivity(MainActivity.class,OneActivity.class );
-
-
-                //Intent intent = new Intent(MainActivity.this, MusicService.class);
-                //intent.putExtra("path", file.getPath());
-                //bindService(intent, serviceConnection, BIND_AUTO_CREATE);
-             /*   Retrofit retrofit = new Retrofit.Builder().baseUrl("http://192.168.0
-             .122:8081/").build();
-                TestApi api = retrofit.create(TestApi.class);
-                api.getBlog().enqueue(new Callback<ResponseBody>() {
-                    @Override
-                    public void onResponse
-                            (Call<ResponseBody> call, Response<ResponseBody> response) {
-
-                        try {
-                            LogUtils.d(response.body().string());
-                        } catch (IOException e) {
-                            e.printStackTrace();
-                        }
-
-                    }
-
-                    @Override
-                    public void onFailure(Call<ResponseBody> call, Throwable t) {
-                        LogUtils.e(t.getMessage());
-                    }
-                });*/
-            }
-        });
-
-        binding.tv1.setOnClickListener(new OnSingleClickListener() {
-            @Override
-            public void onSingleClick(View view) {
-                //if (isBind) {
-                //    unbindService(serviceConnection);
-                //    ToastUtils.showShort("解绑服务");
-                //    isBind = false;
-                //} else {
-                //    ToastUtils.showShort("还没绑定服务");
-                //}
-
-                //ARouter.getInstance().build("/one/AAA")
-                //        .navigation();
-
-            }
-        });
     }
 
 
