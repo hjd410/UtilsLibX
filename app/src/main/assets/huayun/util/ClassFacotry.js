@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/util/ClassFacotry",["dojo/_base/declare","com/huayun/util/StringHelp"],function(_1,_2){return _1("com.huayun.util.ClassFacotry",null,{constructor:function(_3){this.generator=_3.generator;this.clazz=_3.clazz;},newInstance:function(_4,_5){this.clazz=this.clazz.replace(/\./g,"/");var _6=null;if(!_2.isSpace(this.clazz)){require([this.clazz],function(_7){_6=new _7(_4);_5(_6);}.bind(this));}else{_5(null);}}});});

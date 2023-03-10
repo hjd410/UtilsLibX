@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/symbols/MarkerSymobl",["dojo/_base/declare","./BaseSymbol"],function(_1,_2){return _1("com.huayun.webgis.symbols.MarkerSymbol",[_2],{minScale:0,maxScale:0,fixedSize:false,loaded:false,scale:1});});

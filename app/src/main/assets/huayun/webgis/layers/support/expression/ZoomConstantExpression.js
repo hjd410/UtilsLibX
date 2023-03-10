@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/expression/ZoomConstantExpression",["./compoundExpression","../../../gl/dataTransfer"],function(_1,_2){function _3(_4,_5){this.kind=_4;this._styleExpression=_5;this.isStateDependent=_4!=="constant"&&!_1.isStateConstant(_5.expression);};_3.prototype.evaluateWithoutErrorHandling=function(_6,_7,_8){return this._styleExpression.evaluateWithoutErrorHandling(_6,_7,_8);};_3.prototype.evaluate=function(_9,_a,_b){return this._styleExpression.evaluate(_9,_a,_b);};_2.register("ZoomConstantExpression",_3);return _3;});

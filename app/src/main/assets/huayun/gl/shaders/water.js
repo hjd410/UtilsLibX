@@ -1,3 +1,0 @@
-//>>built
-define("com/huayun/gl/shaders/water",["exports","../../webgis/data/uniform"],function(a,b){a.waterVS="attribute vec3 a_pos;\nuniform mat4 u_matrix;\nuniform float u_water_depth;\nvoid main() {\n    gl_Position \x3d u_matrix * vec4(a_pos.xy, a_pos.z \x3e 0.0?u_water_depth:0.0, 1.0);\n}";a.waterFS="precision mediump float;\nvoid main() {\n    gl_FragColor \x3d vec4(0.3, 0.7, 0.72, 1.0);\n}";a.waterUniforms=function(a,c){return{u_matrix:new b.UniformMatrix4f(a,c.u_matrix),u_water_depth:new b.Uniform1f(a,
-c.u_water_depth)}}});

@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/widget/components/buttons/Button",["dojo/_base/declare","./BaseButton"],function(_1,_2){return _1("com.huayun.webgis.widget.components.buttons.Button",[_2],{onClickFun:null,constructor:function(_3){_3.iconClass=_3.id;_1.safeMixin(this,_3);this.onClickFun=null;},postCreate:function(){this.inherited(arguments);},onClick:function(){this.onClickFun.call(this);}});});

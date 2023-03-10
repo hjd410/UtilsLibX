@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/views/3d/layers/LayerView3D",["../../layers/LayerView","../../../utils/extendClazz"],function(_1,_2){function _3(_4){_1.call(this,_4);};_2(_3,_1);_3.prototype.resize=function(){};return _3;});

@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/views/3d/MultiSameSizeGraphicsView",["exports","custom/gl-matrix-min","com/huayun/webgis/gl/mode"],function(_1,_2,_3){var _4=function(_5,_6,_7){};var _8=function(_9,_a){};_1.draw={polygon:_8};_1.add={polygon:_4};});

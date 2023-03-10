@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/geometry/ConeGeometry",["./Point"],function(_1){var _2=1,_3=1,_4=30;function _5(_6){this.radius=_6.radius||_2;this.length=_6.length||_3;this.slices=_6.slices||_4;this.position=_6.position||new _1(0,0,0);};return _5;});

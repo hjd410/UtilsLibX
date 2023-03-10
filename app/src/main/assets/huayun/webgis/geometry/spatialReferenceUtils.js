@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/geometry/spatialReferenceUtils",["exports"],function(c){c.calculateDistance=function(c,b,d){var a=0,a=b.x-d.x;b=b.y-d.y;a=Math.sqrt(a*a+b*b);return"degrees"===c.viewpoint.tileInfo.units?111194.872221777*a:a}});

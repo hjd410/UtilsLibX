@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/symbols/lineDashTexture",["exports","../gl/LineAtlas"],function(_1,_2){var _3=new _2(256,256);var _4=new THREE.DataTexture(_3.data,_3.width,_3.height,THREE.RGBAFormat);_4.minFilter=THREE.LinearFilter;_4.magFilter=THREE.LinearFilter;_4.wrapS=THREE.RepeatWrapping;_4.wrapT=THREE.RepeatWrapping;_4.needsUpdate=true;_1.lineAtlas=_3;_1.texture=_4;});

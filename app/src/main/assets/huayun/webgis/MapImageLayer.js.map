@@ -1,8 +1,0 @@
-{
-"version":3,
-"file":"MapImageLayer.js",
-"lineCount":2,
-"mappings":"A;AAAAA,MAAA,CAAO,iCAAP,CAA0C,EAA1C,CAA8C,CAA9C;",
-"sources":["MapImageLayer.js.uncompressed.js"],
-"names":["define"]
-}

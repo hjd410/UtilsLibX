@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/nls/nl/basemaps",{streets:"Straten",satellite:"Imagery",hybrid:"Satellietbeelden met labels",terrain:"Terrein met labels",topo:"Topografisch",gray:"Lichtgrijs canvas","dark-gray":"Donkergrijs canvas",oceans:"Oceanen","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Wereldstratenkaart (nacht)","streets-relief-vector":"Wereldstratenkaart (met reliëf)","streets-navigation-vector":"Navigatiekaart wereld"});

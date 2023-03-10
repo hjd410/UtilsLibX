@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/action/location/BoroughPosition",["dojo/_base/declare","dojo/topic","../MapAction"],function(_1,_2,_3){return _1("com.huayun.webgis.action.location.BoroughPosition",[_3],{constructor:function(_4){_1.safeMixin(_4);this.isActive=false;this.map=_4.map;},doAction:function(){_2.publish("widgetDialogContent","boroughLocation","行政区定位");}});});

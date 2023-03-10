@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/framework/vo/BeanVo",["dojo/_base/declare"],function(_1){return _1("com.huayun.framework.vo.BeanVo",null,{id:"",identifyId:null,clazz:"",isSingle:false,type:"",propertys:[],constructorArgs:[]});});

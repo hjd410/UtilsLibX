@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/expression/Collator",[],function(){var _1=function _1(_2,_3,_4){if(_2){this.sensitivity=_3?"variant":"case";}else{this.sensitivity=_3?"accent":"base";}this.locale=_4;this.collator=new Intl.Collator(this.locale?this.locale:[],{sensitivity:this.sensitivity,usage:"search"});};_1.prototype.compare=function(_5,_6){return this.collator.compare(_5,_6);};_1.prototype.resolvedLocale=function(){return new Intl.Collator(this.locale?this.locale:[]).resolvedOptions().locale;};return _1;});

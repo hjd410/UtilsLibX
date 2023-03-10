@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/Feature",["./utils/Color"],function(_1){function _2(_3){this.attributes=_3.attributes===undefined||_3.attributes===null?{}:_3.attributes;this.type=_3.type;this.geometry=_3.geometry;if(this.attributes.hasOwnProperty("color")){var _4=this.attributes.color;if(_4 instanceof Array){this.attributes.color=_4;}else{_4=_1.parse(_4);this.attributes.color=[_4.r,_4.g,_4.b,_4.a];}}};return _2;});

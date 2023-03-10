@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/symbols/ExtrusionSymbol",["../utils/Color"],function(_1){function _2(_3){this.type="extrusion";var _4=[0.12347,-0.56158,0.9959292143521045];var _5={r:1,g:1,b:1,a:1};var _6=_3.height===undefined?0:_3.height;var _7=_1.parse(_3.color||"#F00");var _8=_3.opacity===undefined?1:Number(_3.opacity);this.uniforms={"u_lightpos":_4,"u_lightintensity":0.3,"u_lightcolor":[_5.r,_5.g,_5.b],"u_vertical_gradient":0,"u_opacity":_8,"u_color":[_7.r,_7.g,_7.b,_7.a],"u_height":_6,"u_base":0};};return _2;});

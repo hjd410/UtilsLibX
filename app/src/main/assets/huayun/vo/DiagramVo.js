@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/vo/DiagramVo",["./EnvironmentVo","./MapVo"],function(_1,_2){function _3(_4,_5){this.description=_4.description;this.environmentVo=new _1(_4.environment);this.mapVo=new _2(_4.map,_5);};return _3;});

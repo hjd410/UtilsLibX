@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/renderer/index","./CircleRenderer ./CompositeFillRenderer ./CompositeLineRenderer ./CompositeMarkerRenderer ./FillRenderer ./FontRenderer ./ImageRenderer ./LineRenderer ./RectRenderer ./SimpleFillRenderer ./SimpleRenderer ./TextRenderer".split(" "),function(a,b,c,d,e,f,g,h,k,l,m,n){});

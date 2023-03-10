@@ -1,3 +1,0 @@
-//>>built
-define("com/huayun/edit/tool/EditController",["./DrawTool","./EditTool"],function(d,e){function b(){this._currentEditLayer=null;this.drawTool=new d;this.editTool=new e}b.prototype.add=function(a){switch(a.geoType){case "point":this.drawTool.drawPoint(a);break;case "line":this.drawTool.drawLine(a);break;case "polygon":this.drawTool.drawPolygon(a)}};b.prototype.edit=function(){};b.prototype.delete=function(a){this.drawTool.delete(a)};b.prototype.endDraw=function(){this.drawTool.endDraw()};var c={currentEditLayer:{configurable:!0}};
-c.currentEditLayer.set=function(a){this._currentEditLayer=a;this.drawTool.currentEditLayer=a};Object.defineProperties(b.prototype,c);return b});

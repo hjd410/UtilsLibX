@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/data/commonVBO",["exports","com/huayun/webgis/gl/SegmentVector","com/huayun/webgis/data/ArrayType"],function(_1,_2,_3){var _4=50;var _5=new _3.StructArrayLayout3f12();for(var i=0;i<_4;i++){_5.emplaceBack(i,-1,0);_5.emplaceBack(i,1,0);}_1.arcVBO={layoutVertexArray:[{name:"a_pos",type:"Float32",components:3,offset:0}],segments:_2.simpleSegment(0,0,100,2)};});

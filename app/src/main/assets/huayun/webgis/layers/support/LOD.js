@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/LOD",[],function(){function _1(_2){this.level=_2.level;this.scale=_2.scale;this.resolution=_2.resolution;};_1.prototype.toString=function(){return "level: "+this.level+" scale: "+this.scale+" resolution: "+this.resolution;};return _1;});

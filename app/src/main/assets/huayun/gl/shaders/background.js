@@ -1,3 +1,0 @@
-//>>built
-define("com/huayun/gl/shaders/background",["exports","../../webgis/data/uniform"],function(a,b){a.backgroundVS="attribute vec4 a_pos;\n\nvarying float y_screen;\n//varying vec2 v_texture;\n\nvoid main() {\n    gl_Position \x3d vec4(a_pos.xy, 0.0, 1.0);\n//    v_texture \x3d a_pos.zw;\n    y_screen \x3d a_pos.y;\n}";a.backgroundFS="precision mediump float;\n\n/*uniform sampler2D u_image;\nvarying vec2 v_texture;*/\nvarying float y_screen;\n\nvoid main() {\n    //    gl_FragColor \x3d texture2D(u_image, v_texture);\n    float fogFactor \x3d 1.0 - smoothstep(0.3, 0.5, y_screen);\n    gl_FragColor \x3d vec4(0.94, 0.93, 0.91, 1.0) * (1.0-fogFactor) + vec4(0.0, 0.0, 0.0, 0.0) * fogFactor;\n}";
-a.bgUniforms=function(a,b){return{}}});

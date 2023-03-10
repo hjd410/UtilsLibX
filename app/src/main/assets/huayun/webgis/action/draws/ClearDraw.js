@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/action/draws/ClearDraw",["dojo/_base/declare","dojo/on","dojo/dom-class","../MapAction"],function(_1,on,_2,_3){return _1("com.huayun.webgis.action.draws.ClearDraw",[_3],{constructor:function(_4){_1.safeMixin(_4);this.isActive=false;this.view=_4.view;this.drawLayer=this.view.map.findLayerById("drawLayer");},doAction:function(_5){this.view.panEnabled=true;this.view.selectEnabled=true;this.drawLayer.clear();_2.remove(this.view.domNode,"draw-cursor-style");}});});

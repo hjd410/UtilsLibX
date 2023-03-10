@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/thematicmap/tool/FileParseFromService",["dojo/Deferred","dojo/request","../../util/JSONFormatterUtil","../../vo/DataSourceVo","../../vo/DiagramVo"],function(_1,_2,_3,_4,_5){function _6(){this.url="";this.styles=[];};_6.prototype.getAll=function(_7,_8,_9){this.url=_7.url;_2(this.url).then.call(this,function(_a){var _b=_3.string2Json(_a);var _c=_b.datasource.cat.dataSources.dataSource;if(!Array.isArray(_c)){_c=[_c];}var _d=_b.map.root;this.styles=_b.style;_8({dataSourceVo:new _4(_c),diagramVo:new _5(_d,this.styles)});}.bind(this));};return _6;});

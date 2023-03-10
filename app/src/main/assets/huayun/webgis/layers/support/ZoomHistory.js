@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/ZoomHistory",[],function(){var _1=function _1(){this.first=true;};_1.prototype.update=function update(z,_2){var _3=Math.floor(z);if(this.first){this.first=false;this.lastIntegerZoom=_3;this.lastIntegerZoomTime=0;this.lastZoom=z;this.lastFloorZoom=_3;return true;}if(this.lastFloorZoom>_3){this.lastIntegerZoom=_3+1;this.lastIntegerZoomTime=_2;}else{if(this.lastFloorZoom<_3){this.lastIntegerZoom=_3;this.lastIntegerZoomTime=_2;}}if(z!==this.lastZoom){this.lastZoom=z;this.lastFloorZoom=_3;return true;}return false;};return _1;});

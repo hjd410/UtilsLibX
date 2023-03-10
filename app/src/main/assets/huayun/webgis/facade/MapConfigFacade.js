@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/facade/MapConfigFacade",["dojo/_base/declare","dojo/request"],function(_1,_2){return _1("com.huayun.webgis.facade.MapConfigFacade",null,{url:"",constructor:function(_3){this._url=_3.url;},getMapConfigData:function(_4,_5){_2.get(this._url,{handleAs:"json"}).then(function(_6){_4(_6);},function(_7){_5(_7);});}});});

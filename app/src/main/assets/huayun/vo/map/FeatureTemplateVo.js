@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/vo/map/FeatureTemplateVo",["./FieldVo"],function(_1){function _2(_3){var _4=_3._name.split("-");this.name=_4[0];this.propertyValue=_4.length>=2?_4[1]:"";this.fields=this.parseField(_3.fields.field);};_2.prototype.parseField=function(_5){if(Array.isArray(_5)){var _6=[];for(var i=0;i<_5.length;i++){var _7=_5[i];_6.push(new _1(_7));}return _6;}};return _2;});

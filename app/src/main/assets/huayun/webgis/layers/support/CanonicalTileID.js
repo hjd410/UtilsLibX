@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/CanonicalTileID",["./funcUtils"],function(_1){var _2=function _2(z,x,y){this.z=z;this.x=x;this.y=y;this.key=_1.calculateKey(0,z,x,y);};_2.prototype.equals=function equals(id){return this.z===id.z&&this.x===id.x&&this.y===id.y;};_2.prototype.url=function url(_3,_4){return _3[(this.x+this.y)%_3.length].replace("{z}",String(Math.round(this.z))).replace("{x}",String(this.x)).replace("{y}",String(_4==="tms"?(Math.pow(2,this.z)-this.y-1):this.y));};_2.prototype.getTilePoint=function getTilePoint(_5){};return _2;});

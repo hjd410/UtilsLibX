@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/nls/et/basemaps",{streets:"Tänavad",satellite:"Satelliitpildid",hybrid:"Kaardikirjadega satelliitpildid",terrain:"Kaardikirjadega kõrgusmudel",topo:"Topograafiline kaart",gray:"Helehall taust","dark-gray":"Tumehall taust",oceans:"Ookeanid","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Maailma tänavakaart (öö)","streets-relief-vector":"Maailma tänavakaart (reljeefiga)","streets-navigation-vector":"Maailma navigeerimiskaart"});

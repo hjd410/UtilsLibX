@@ -10,7 +10,7 @@
         android:layout_height="@dimen/dp45"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <WebView
+    <LinearLayout
         android:id="@+id/ll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"

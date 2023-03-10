@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/symbols/LineParticleSymbol",["./BaseSymbol","../utils/Color"],function(_1,_2){var _3=function(_4){_1.call(this,_4);this.type="lineParticle";this.segment=_4.segment||10;var _5=_2.parse(_4.color||"#FF0000");this.uniforms={"color":[_5.r,_5.g,_5.b,_5.a]};};if(_1){_3.__proto__=_1;}_3.prototype=Object.create(_1&&_1.prototype);_3.prototype.constructor=_3;return _3;});

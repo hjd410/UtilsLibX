@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/geometry/Anchor",["../geometry/Point"],function(_1){return (function(_2){function _3(x,y,_4,_5){_2.call(this,x,y);this.angle=_4;if(_5!==undefined){this.segment=_5;}};if(_2){_3.__proto__=_2;}_3.prototype=Object.create(_2&&_2.prototype);_3.prototype.constructor=_3;_3.prototype.clone=function clone(){return new _3(this.x,this.y,this.angle,this.segment);};return _3;}(_1));});

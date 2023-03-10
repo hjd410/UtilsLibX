@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/layers/support/style/PossiblyEvaluatedPropertyValue",[],function(){var _1=function _1(_2,_3,_4){this.property=_2;this.value=_3;this.parameters=_4;};_1.prototype.isConstant=function isConstant(){return this.value.kind==="constant";};_1.prototype.constantOr=function constantOr(_5){if(this.value.kind==="constant"){return this.value.value;}else{return _5;}};_1.prototype.evaluate=function evaluate(_6,_7){return this.property.evaluate(this.value,this.parameters,_6,_7);};return _1;});

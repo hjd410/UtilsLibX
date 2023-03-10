@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/symbols/SpriteSymbol",["dojo/topic","./BaseSymbol"],function(_1,_2){var _3=function(_4){_2.call(this,_4);this.type="sprite";this.loaded=false;this.used=false;this.width=_4.width;this.height=_4.height;this.uniforms={"center":[0.5,0.5],"rotation":0,"map":0};var _5=new Image();_5.onload=function(e){this.loaded=true;this.image=_5;if(this.used){_1.publish("threeRender");}}.bind(this);_5.src=_4.url;};if(_2){_3.__proto__=_2;}_3.prototype=Object.create(_2&&_2.prototype);_3.prototype.constructor=_3;return _3;});

@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/action/ActiveMapAction",["dojo/_base/declare","./ActiveAction"],function(_1,_2){return _1("com.huayun.webgis.action.ActiveMapAction",[_2],{map:null,constructor:function(_3){this.map=null;},active:function(){},invalid:function(){},doActive:function(_4){}});});

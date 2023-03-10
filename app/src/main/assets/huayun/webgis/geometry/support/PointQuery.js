@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/geometry/support/PointQuery",["custom/kdbush.min"],function(_1){function _2(){this._data=null;this._index=null;};_2.prototype.createIndex=function(_3){this._data=_3||[];this._index=new _1(_3,function(p){return p.point.x;},function(p){return p.point.y;});};_2.prototype.query=function(_4){if(this._index){return this._index.range(_4.minx,_4.miny,_4.maxx,_4.maxy).map(function(id){return this._data[id];}.bind(this));}else{return [];}};return _2;});

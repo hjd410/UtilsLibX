@@ -1,3 +1,0 @@
-//>>built
-define("com/huayun/gl/shaders/heightMap",["exports","../../webgis/data/uniform"],function(a,b){a.heightMapVS="precision highp float;\n\nattribute vec3 a_pos;\n\nuniform float u_min_height;\nuniform float u_delta_height;\nvarying float v_color;\n\nvoid main() {\n    float height \x3d a_pos.z;\n    gl_Position \x3d vec4(a_pos.xy * 2.0 - 1.0, 0.0, 1.0);\n    v_color \x3d (height - u_min_height) / u_delta_height;\n}";a.heightMapFS="precision mediump float;\nvarying float v_color;\n\nvoid main() {\n//    gl_FragColor \x3d vec4(v_color, v_color, v_color, 1.0);\n    gl_FragColor \x3d vec4(v_color, v_color, v_color, 1.0);\n}";
-a.heightMapUniforms=function(a,c){return{u_min_height:new b.Uniform1f(a,c.u_min_height),u_delta_height:new b.Uniform1f(a,c.u_delta_height)}}});

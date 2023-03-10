@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/util/StringHelp",[],function(){return {isSpace:function(_1){if(_1==null||_1==="null"){return true;}else{if(typeof _1==="object"){return false;}else{var _2=/(^\s*)|(\s*$)/g;if(_1.replace(_2,"").length===0){return true;}return !_2.test(_1);}}},isStrEqual:function(_3,_4){var _5=false;if(this.isSpace(_3)&&this.isSpace(_4)){_5=true;}else{if(_3===_4){_5=true;}}return _5;},extractProerty:function(_6){var _7;var _8=/^\$\{(.*)\}$/;var _9=_8.exec(_6);if(_9===null){_7=_6;}else{_7=_9[1];}return _7;}};});

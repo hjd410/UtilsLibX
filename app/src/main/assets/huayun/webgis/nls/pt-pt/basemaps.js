@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/nls/pt-pt/basemaps",{streets:"Ruas",satellite:"Imagem",hybrid:"Imagens com Rótulos",terrain:"Terrenos com Rótulos",topo:"Topográfico",gray:"Fundo Cinza Claro","dark-gray":"Fundo Cinza Escuro",oceans:"Oceanos","national-geographic":"National Geographic",osm:"OpenStreetMap","streets-night-vector":"Mapa de Ruas Mundial (Noite)","streets-relief-vector":"Mapa de Ruas Mundial (com Relevo)","streets-navigation-vector":"Mapa de Navegação Mundial"});

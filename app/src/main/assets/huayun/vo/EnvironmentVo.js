@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/vo/EnvironmentVo",["../util/JSONFormatterUtil"],function(_1){function _2(_3){for(var _4 in _3){if(_3.hasOwnProperty(_4)){var _5=_1.formatterKey(_3[_4]);switch(_4){case "defaultFont":this.defaultFont=_5["styleId"];break;case "bgColor":this.bgColor=_5["fill"];break;case "screen":this.dpi=_5["dpi"];break;}}}};return _2;});

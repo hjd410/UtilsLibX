@@ -1,2 +1,0 @@
-//>>built
-define("com/huayun/webgis/action/search/NameSearchAction",["dojo/_base/declare","dojo/topic","../MapAction"],function(_1,_2,_3){return _1("com.huayun.webgis.action.search.NameSearchAction",[_3],{constructor:function(_4){_1.safeMixin(_4);this.isActive=false;this.view=_4.view;},doAction:function(){_2.publish("widgetDialogContent","nameSearch","地名搜索");}});});

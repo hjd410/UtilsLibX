@@ -1,2 +1,0 @@
-//>>built
-(function(){var _1=/(.+)(\/com\/huayun\/init.js)/;var _2=document.currentScript.src.match(_1)[1];if(!window.dojoConfig){window.dojoConfig={};}window.dojoTopic={};document.write("<script src=\""+_2+"/custom/xml2json.js\"></script>");document.write("<script src=\""+_2+"/dojo/dojo.js\"></script>");document.write("<script src=\""+_2+"/custom/dojoRequire.js\"></script>");}());
