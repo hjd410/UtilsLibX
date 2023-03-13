@@ -40,20 +40,9 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+
         <activity android:name=".test.TwoActivity" />
-
-<!--        <activity-->
-<!--            android:name=".MainActivity"-->
-<!--            android:exported="true">-->
-<!--            <intent-filter>-->
-<!--                <action android:name="android.intent.action.MAIN" />-->
-
-<!--                <category android:name="android.intent.category.LAUNCHER" />-->
-<!--            </intent-filter>-->
-<!--        </activity>-->
-
         <service android:name="com.hjd.test.MusicService" />
-        <service android:name=".my.MyServer" />
         <service android:name=".test.MyLocationServer" />
     </application>
 

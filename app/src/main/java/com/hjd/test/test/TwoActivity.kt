@@ -14,7 +14,7 @@ import com.hjq.permissions.XXPermissions
  * @date 2022/6/23 15:30.
  * @apiNote
  */
-class TwoActivity : AppCompatActivity() {
+class  TwoActivity : AppCompatActivity() {
     private lateinit var binding: ActivityTwoBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -34,12 +34,7 @@ class TwoActivity : AppCompatActivity() {
     }
 
     private fun initView() {
-        binding.btn1.setOnClickListener {
-            startService(Intent(this, MyLocationServer::class.java))
-        }
-        binding.btn2.setOnClickListener {
-            stopService(Intent(this, MyLocationServer::class.java))
-        }
+
     }
 
     override fun onNightModeChanged(mode: Int) {

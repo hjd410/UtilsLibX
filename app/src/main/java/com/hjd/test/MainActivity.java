@@ -7,17 +7,11 @@ import android.content.ServiceConnection;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.Handler;
 import android.os.IBinder;
-import android.view.View;
 
-import com.alibaba.android.arouter.launcher.ARouter;
 import com.blankj.utilcode.util.LogUtils;
-import com.blankj.utilcode.util.ZipUtils;
-import com.bumptech.glide.Glide;
 import com.hjd.apputils.base.BaseBindingActivity;
 import com.hjd.test.databinding.ActivityMainBinding;
-import com.hjd.test.model.PeopleModel;
 import com.hjq.permissions.OnPermissionCallback;
 import com.hjq.permissions.Permission;
 import com.hjq.permissions.XXPermissions;
@@ -31,17 +25,10 @@ import java.util.List;
 
 import static java.lang.annotation.ElementType.*;
 
-import androidx.databinding.DataBindingUtil;
-import androidx.recyclerview.widget.AsyncListDiffer;
-
 
 public class MainActivity extends BaseBindingActivity<ActivityMainBinding> {
 
     MusicService.SimpleBinder bindService;
-    PeopleModel model;
-
-
-
     private boolean isBind;
     File file = new File(Environment.getExternalStorageDirectory()
                                  .getPath() + "/appTest/one.zip");
@@ -84,19 +71,12 @@ public class MainActivity extends BaseBindingActivity<ActivityMainBinding> {
                         }
                     });
         }
-
     }
 
 
     @Override
     public void initData() {
 
-    }
-
-
-    @Override
-    public int checkPermission(String permission, int pid, int uid) {
-        return super.checkPermission(permission, pid, uid);
     }
 
     @Target(TYPE)

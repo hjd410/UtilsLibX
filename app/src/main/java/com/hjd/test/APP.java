@@ -11,7 +11,6 @@ import com.hjd.apputils.app.MyLib;
  */
 public class APP extends Application {
 
-
     @Override
     public void onCreate() {
         super.onCreate();
