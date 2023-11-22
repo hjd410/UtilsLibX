@@ -10,8 +10,9 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 
-
+import androidx.annotation.ColorRes;
 import androidx.annotation.IntDef;
+import androidx.core.content.ContextCompat;
 
 import com.hjd.apputils.app.MyLib;
 
@@ -42,20 +43,36 @@ public class StatusBarUtil {
      *
      * @param colorId 颜色
      */
+
     public static void setStatusBarColor(Activity activity, int colorId) {
 
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            Window window = activity.getWindow();
-            window.setStatusBarColor(colorId);
-        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
-            //使用SystemBarTintManager,需要先将状态栏设置为透明
-            StatusBarLightMode(activity);
-            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(activity);
-            systemBarTintManager.setStatusBarTintEnabled(true);//显示状态栏
-            systemBarTintManager.setStatusBarTintColor(colorId);//设置状态栏颜色
-        }
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+        Window window = activity.getWindow();
+        window.setStatusBarColor(colorId);
+//        } else if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
+//            //使用SystemBarTintManager,需要先将状态栏设置为透明
+//            StatusBarLightMode(activity);
+//            SystemBarTintManager systemBarTintManager = new SystemBarTintManager(activity);
+//            systemBarTintManager.setStatusBarTintEnabled(true);//显示状态栏
+//            systemBarTintManager.setStatusBarTintColor(colorId);//设置状态栏颜色
+//        }
     }
 
+    /**
+     * 设置状态栏透明度、背景颜色、文字颜色
+     * @param isTranslate 是否透明，若为true，则bgColor设置无效
+     * @param isDarkText  字体颜色，只有黑白两色，无论什么色值，都只会转为黑白两色
+     * @param bgColor     背景色，即状态栏颜色，isTranslate若为true则此值无效
+     */
+    public static boolean setImmersion(Activity activity, boolean isTranslate, boolean isDarkText, @ColorRes int bgColor) {
+        Window window = activity.getWindow();
+        View decorView = window.getDecorView();
+        //可有可无
+        window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+        decorView.setSystemUiVisibility((isTranslate ? View.SYSTEM_UI_FLAG_LAYOUT_FULLSCREEN : 0) | (isDarkText ? View.SYSTEM_UI_FLAG_LIGHT_STATUS_BAR : 0));
+        window.setStatusBarColor(isTranslate ? Color.TRANSPARENT : ContextCompat.getColor(activity, bgColor));
+        return true;
+    }
 
     /**
      * 代码实现android:fitsSystemWindows
@@ -75,7 +92,31 @@ public class StatusBarUtil {
     }
 
     /**
+     * 设置状态栏主题
+     *
+     * @param light true：表示我要白底黑字的状态栏
+     *              false：还原成沉浸式的状态栏效果
+     */
+    public static void setStatusLightTheme(Activity activity, boolean light) {
+        boolean isAdaptive = false;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            isAdaptive = setStatusBarFontIconDark(activity, TYPE_M, light);
+        } else if (Build.MANUFACTURER.equalsIgnoreCase("xiaomi")) {
+            isAdaptive = setStatusBarFontIconDark(activity, TYPE_MIUI, light);
+        } else if (Build.MANUFACTURER.equalsIgnoreCase("meizu")) {
+            isAdaptive = setStatusBarFontIconDark(activity, TYPE_FLYME, light);
+        }
+        //如果都不支持 设置成灰色底色的状态栏 使得状态栏可见
+        if (!isAdaptive)
+            StatusBarUtil.setStatusBarColor(activity, android.R.color.darker_gray);
+    }
+
+    /**
      * 设置 状态栏深色浅色切换
+     * <p>
+     * 0:MIUI
+     * 1:Flyme
+     * 3: 6.0系统
      */
     public static boolean setStatusBarFontIconDark(Activity activity, @ViewType int type, boolean dark) {
         switch (type) {

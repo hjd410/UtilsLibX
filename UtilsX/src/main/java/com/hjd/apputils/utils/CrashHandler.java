@@ -1,6 +1,7 @@
 package com.hjd.apputils.utils;
 
 import android.content.Context;
+import android.os.Environment;
 import android.text.TextUtils;
 import android.util.Log;
 
@@ -13,30 +14,31 @@ import java.util.Date;
  * Created by HJD on 2020/9/15 0015 and 15:16.
  */
 public class CrashHandler implements Thread.UncaughtExceptionHandler {
+    private final static String TAG = "CrashHandlerLog=";
     //每个小时的日志都是记录在同一个文件
     private final static String LOG_FILE_CREATE_TIME_FORMAT = "yyyy-MM-dd-HH-mm-ss";
     private final static String LOG_FILE_SUFFIX = "_crash.txt";
     //日志记入的时间
-    private final static String LOG_RECORD_TIME_FORMAT ="yyyy-MM-dd HH:mm:ss";
+    private final static String LOG_RECORD_TIME_FORMAT = "yyyy-MM-dd HH:mm:ss";
 
-    private UncaughtExceptionHanlderListener mHanlderListener;
+    private UncaughtExceptionHandlerListener mHandlerListener;
 
     private Context mContext;
 
     private static CrashHandler sInstance;
     //设置日志所在文件夹路径
-    private String mLogDir;
+    private String mLogDir = Environment.getExternalStorageDirectory() + "/ErrorLog";
 
     private StringBuffer sb;
 
-    public static CrashHandler getInstance(Context context){
+    public static CrashHandler getInstance(Context context) {
         if (sInstance == null) {
             sInstance = new CrashHandler(context);
         }
         return sInstance;
     }
 
-    private CrashHandler(Context context){
+    private CrashHandler(Context context) {
         mContext = context;
         Thread.setDefaultUncaughtExceptionHandler(this);
     }
@@ -46,43 +48,51 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
      */
     @Override
     public void uncaughtException(Thread thread, Throwable ex) {
-        Log.e("ssssssssss","程序崩溃退出1");
-        hanldeException(ex);
+        Log.e(TAG, "程序崩溃退出1");
+        handleException(ex);
         //退出程序
         android.os.Process.killProcess(android.os.Process.myPid());
-        System.exit(1);
-        if (mHanlderListener != null) {
-            mHanlderListener.handlerUncaughtException(sb);
+        System.exit(0);
+        if (mHandlerListener != null) {
+            mHandlerListener.handlerUncaughtException(sb);
         }
     }
 
     /**
      * 设置外部要处理异常发生时操作监听器
-     * @param hanlderListener : {@link UncaughtExceptionHanlderListener}
+     *
+     * @param handlerListener : {@link UncaughtExceptionHandlerListener}
      */
-    public void setHanlderListener(UncaughtExceptionHanlderListener hanlderListener) {
-        this.mHanlderListener = hanlderListener;
+    public void setHandlerListener(UncaughtExceptionHandlerListener handlerListener) {
+        this.mHandlerListener = handlerListener;
     }
+
     /**
      * 设置日志所在文件夹路径
+     * 默认已经设置 ，如需要其他路径可自行指定
+     *
      * @param logDirPath
      */
-    public void setCrashLogDir(String logDirPath){
+    public void setCrashLogDir(String logDirPath) {
         mLogDir = logDirPath;
     }
 
-    //崩溃日志的保存操作
-    private void hanldeException(Throwable ex){
-        Log.e("ssssssssss","崩溃日志保存1");
+    /**
+     * 崩溃日志的保存操作
+     */
+    private void handleException(Throwable ex) {
+        Log.e(TAG, "崩溃日志保存1");
         if (ex == null) {
-            return ;
+            return;
         }
         if (CrashUtils.isSDCardAvaiable(mContext) && !TextUtils.isEmpty(mLogDir)) {
             saveCrashInfoToFile(ex);
         }
     }
 
-    //保存错误信息到文件中
+    /**
+     * 保存错误信息到文件中
+     */
     private void saveCrashInfoToFile(Throwable ex) {
         Writer info = new StringWriter();
         PrintWriter printWriter = new PrintWriter(info);
@@ -114,7 +124,7 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         sb.append(">>>>>>>>>>>>>> ");
         sb.append("\r\n");
         sb.append(">>>>>>>>>>>>>>可用/总内存 ");
-        sb.append(CrashUtils.getAvailMemory(mContext)+"/"+ CrashUtils.getTotalMemory(mContext));
+        sb.append(CrashUtils.getAvailMemory(mContext) + "/" + CrashUtils.getTotalMemory(mContext));
         sb.append(">>>>>>>>>>>>>> ");
         sb.append("\r\n");
         sb.append(">>>>>>>>>>>>>>IP ");
@@ -124,30 +134,31 @@ public class CrashHandler implements Thread.UncaughtExceptionHandler {
         sb.append(content);
         sb.append("\r\n");
         sb.append("\r\n");
-        this.sb =sb;
-        Log.e("报错信息：",content);
-        CrashUtils.writeToFile(mLogDir,generateLogFileName("error",time), sb.toString(), "utf-8");
+        this.sb = sb;
+        Log.e(TAG + "报错信息：", content);
+        CrashUtils.writeToFile(mLogDir, generateLogFileName("error", time), sb.toString(), "utf-8");
 
-        return ;
+        return;
     }
+
     //生成日志文件名
-    private String generateLogFileName(String prefix, long time){
+    private String generateLogFileName(String prefix, long time) {
         StringBuilder sb = new StringBuilder();
         sb.append(prefix);
         sb.append("_");
-        sb.append(CrashUtils.formatDate(new Date(time),LOG_FILE_CREATE_TIME_FORMAT));
+        sb.append(CrashUtils.formatDate(new Date(time), LOG_FILE_CREATE_TIME_FORMAT));
         sb.append(LOG_FILE_SUFFIX);
         return sb.toString();
     }
+
     /**
      * 未捕获异常的处理监听器
      */
-    public static interface UncaughtExceptionHanlderListener{
+    public static interface UncaughtExceptionHandlerListener {
         /**
          * 当获取未捕获异常时的处理
          * 一般用于关闭界面和数据库、网络连接等等
          */
         public void handlerUncaughtException(StringBuffer sb);
     }
-
 }

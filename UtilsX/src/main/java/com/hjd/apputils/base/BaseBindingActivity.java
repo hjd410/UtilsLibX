@@ -27,7 +27,6 @@ import androidx.viewbinding.ViewBinding;
 import com.hjd.apputils.custom.LoadingDialog;
 import com.hjd.apputils.utils.AppManager;
 
-
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.lang.reflect.ParameterizedType;
@@ -43,12 +42,12 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
 
     protected T binding;
 
-
     public static final Map<String, String> PARAM = new HashMap<>();
     /**
      * 是否允许旋转屏幕
+     * 230818修改默认为false
      */
-    private boolean isAllowScreenRotation = true;
+    private boolean isAllowScreenRotation = false;
     /**
      * Loading加载
      */
@@ -83,76 +82,7 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
         initView(savedInstanceState);
         initData();
         initPhotoError();//解决7.0上相机问题
-        //设置屏幕是否可旋转
-        if (!isAllowScreenRotation) {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
-        } else {
-            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
-        }
     }
-
-    @Override
-    protected void onStart() {
-        super.onStart();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is starting");
-    }
-
-    @Override
-    protected void onRestart() {
-        super.onRestart();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is restart");
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is resumed");
-    }
-
-    public Activity getActivity() {
-        return this;
-    }
-
-    @Override
-    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
-        super.onSaveInstanceState(outState);
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is onSaveInstanceState");
-    }
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is pause");
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + "is stop");
-    }
-
-    @Override
-    protected void onDestroy() {
-        super.onDestroy();
-        Log.e("app",
-              this.getClass()
-                      .getSimpleName() + " is destroyed");
-        AppManager.getInstance()
-                .finishActivity(this);
-    }
-
 
     /**
      * 初始化控件
@@ -163,6 +93,69 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * 设置数据
      */
     protected abstract void initData();
+
+    public Activity getActivity() {
+        return this;
+    }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState, PersistableBundle outPersistentState) {
+        super.onSaveInstanceState(outState);
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is onSaveInstanceState");
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is starting");
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is restart");
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is resumed");
+    }
+
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is pause");
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + "is stop");
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        Log.e("app",
+                this.getClass()
+                        .getSimpleName() + " is destroyed");
+        AppManager.getInstance()
+                .finishActivity(this);
+    }
 
 
     @Override
@@ -178,7 +171,12 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * @param allowScreenRotation true or false
      */
     public void setAllowScreenRotation(boolean allowScreenRotation) {
-        isAllowScreenRotation = allowScreenRotation;
+        //设置屏幕是否可旋转
+        if (allowScreenRotation) {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_LANDSCAPE);
+        } else {
+            setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED);
+        }
     }
 
     /**
@@ -260,8 +258,7 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * @author hjd
      * {@code @title} 修改跳转页的标题
      */
-    public <T> void gotoActivity(Class<T> clazz, @Nullable String... title
-    ) {
+    public <T> void gotoActivity(Class<T> clazz, @Nullable String... title) {
         Intent intent = new Intent(getActivity(), clazz);
         intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         if (title != null) {
@@ -276,13 +273,12 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
      * @author hjd
      * {@code @params} 参数
      */
-    public <T> void gotoActivity(Class<T> clazz, Map<String, Object> params
-    ) {
+    public <T> void gotoActivity(Class<T> clazz, Map<String, Object> params) {
         Intent intent = new Intent(getActivity(), clazz);
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_EXCLUDE_FROM_RECENTS);
         for (Map.Entry<String, Object> stringObjectEntry : params.entrySet()) {
             intent.putExtra((String) ((Map.Entry<?, ?>) stringObjectEntry).getKey(),
-                            String.valueOf(stringObjectEntry.getValue()));
+                    String.valueOf(stringObjectEntry.getValue()));
         }
         this.startActivity(intent);
     }
@@ -340,7 +336,7 @@ public abstract class BaseBindingActivity<T extends ViewBinding> extends AppComp
             v.getLocationInWindow(l);
             int left = l[0], top = l[1], bottom = top + v.getHeight(), right = left + v.getWidth();
             if (event.getX() > left && event.getX() < right && event.getY() > top &&
-                event.getY() < bottom) {
+                    event.getY() < bottom) {
                 // 点击EditText的事件，忽略它。
                 return false;
             } else {

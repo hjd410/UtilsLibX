@@ -315,7 +315,11 @@ public class FileUtil {
         } catch (IllegalArgumentException | IOException e) {
             e.printStackTrace();
         } finally {
-            retriever.release();
+            try {
+                retriever.release();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         return bitmap;
     }
@@ -337,7 +341,11 @@ public class FileUtil {
         } catch (IllegalArgumentException e) {
             e.printStackTrace();
         } finally {
-            retriever.release();
+            try {
+                retriever.release();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
         }
         return bitmap;
     }

@@ -1,13 +1,17 @@
 package com.hjd.apputils.utils;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Environment;
+import android.provider.MediaStore;
+import android.text.TextUtils;
 import android.util.Log;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
@@ -17,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.OutputStream;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
@@ -186,6 +191,41 @@ public class ImageUtils {
         return bitmap;
     }
 
+
+    /**
+     * API 29及以下保存图片到相册的方法
+     *
+     * @param toBitmap 要保存的图片
+     */
+    private void saveImage(Context context, Bitmap toBitmap, String imgTitle, String des) {
+        String insertImage = MediaStore.Images.Media.insertImage(context.getContentResolver(), toBitmap, imgTitle, des);
+        if (!TextUtils.isEmpty(insertImage)) {
+            Toast.makeText(context, "图片保存成功!" + insertImage, Toast.LENGTH_SHORT).show();
+            Log.e("打印保存路径", insertImage + "-");
+        }
+    }
+
+    /**
+     * API29 中的最新保存图片到相册的方法
+     */
+    private void saveImage29(Context context, Bitmap toBitmap) {
+        //开始一个新的进程执行保存图片的操作
+        Uri insertUri = context.getContentResolver().insert(MediaStore.Images.Media.EXTERNAL_CONTENT_URI, new ContentValues());
+        //使用use可以自动关闭流
+        try {
+            OutputStream outputStream = context.getContentResolver().openOutputStream(insertUri, "rw");
+            if (toBitmap.compress(Bitmap.CompressFormat.JPEG, 90, outputStream)) {
+                Log.e("保存成功", "success");
+                outputStream.flush();
+                outputStream.close();
+                Toast.makeText(context, "图片保存成功!", Toast.LENGTH_SHORT).show();
+            } else {
+                Log.e("保存失败", "fail");
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
     /**
      * 通过uri获取图片并进行压缩

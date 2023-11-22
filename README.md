@@ -11,3 +11,7 @@
 ```
  MyLib.getInstance().init(this);
 ```
+
+## 0.0.2
+>1、修改Activity、Fragment的基类为kotlin，并删除了一些不必要的代码和方法
+> 2、CrashHandler修复了不能保存报错日志的问题

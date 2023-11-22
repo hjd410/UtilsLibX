@@ -324,7 +324,9 @@ public class CommonUtils {
         }
     }
 
-    /*获取assets文件中json文件,返回json*/
+    /**
+     * 获取assets文件中json文件,返回json
+     */
     public String getJson(String fileName) {
         StringBuilder stringBuilder = new StringBuilder();
         try {

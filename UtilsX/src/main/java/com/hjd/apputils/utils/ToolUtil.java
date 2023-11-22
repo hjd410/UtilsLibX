@@ -24,6 +24,11 @@ public class ToolUtil {
     }
 
 
+    /**
+     *  检查设备是否具有导航栏
+     * @param context
+     * @return
+     */
     public static boolean checkDeviceHasNavigationBar (Context context) {
         boolean hasNavigationBar = false;
         Resources rs = context.getResources( );
@@ -142,6 +147,10 @@ public class ToolUtil {
     private static final int MIN_CLICK_DELAY_TIME = 500;
     private static long lastClickTime;
 
+    /**
+     * 不能快速点击
+     * @return
+     */
     public static boolean isFastClick ( ) {
         boolean flag = false;
         long curClickTime = System.currentTimeMillis( );

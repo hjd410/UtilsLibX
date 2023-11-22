@@ -2,21 +2,17 @@ package com.hjd.apputils.base;
 
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentActivity;
 
-import com.hjd.apputils.R;
 import com.hjd.apputils.custom.LoadingDialog;
 
 import java.util.HashMap;
@@ -123,12 +119,6 @@ public abstract class BaseFragment extends Fragment {
     protected void initView() {
 
     }
-/*
-    public void setTitleLineColor(int color) {
-        View view = findViewById(R.id.view_title_line);
-        view.setBackgroundColor(color);
-    }
-*/
 
     /**
      * 设置监听事件
@@ -212,24 +202,6 @@ public abstract class BaseFragment extends Fragment {
         }
         context.startActivity(intent);
     }
-
-
-    /*设置文字左面的图片*/
-    public void setLeftDrawable(int resid) {
-        TextView leftButton = (TextView) findViewById(R.id.head_left_text_button);
-        Drawable leftDrawable = ContextCompat.getDrawable(mActivity, resid);
-        leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
-        leftButton.setCompoundDrawables(leftDrawable, null, null, null);
-    }
-
-    /*设置文字上面的图片*/
-    public void setTopDrawable(int resid) {
-        TextView leftButton = (TextView) findViewById(R.id.head_left_text_button);
-        Drawable leftDrawable = ContextCompat.getDrawable(mActivity, resid);
-        leftDrawable.setBounds(0, leftDrawable.getMinimumWidth(), 0, leftDrawable.getMinimumHeight());
-        leftButton.setCompoundDrawables(leftDrawable, null, null, null);
-    }
-
 
     public LoadingDialog showLoadingDialog() {
         if (loadingDialog == null) {

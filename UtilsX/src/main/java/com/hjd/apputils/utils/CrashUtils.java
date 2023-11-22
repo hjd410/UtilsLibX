@@ -36,11 +36,12 @@ import java.util.Map;
 import java.util.TimeZone;
 
 
-
 /**
  * Created by HJD on 2020/9/15 0015 and 15:51.
  */
 public class CrashUtils {
+    private final static String TAG = "CrashHandlerLog=";
+
     // 默认为北京时间对应的东八区
     private static final TimeZone GMT = TimeZone.getTimeZone("GMT+8");
     // SD卡的最小剩余容量大小1MB
@@ -214,7 +215,7 @@ public class CrashUtils {
     public static void writeToFile(String dir, String fileName, String content, String encoder) {
         File file = new File(dir, fileName);
         File parentFile = file.getParentFile();
-        Log.e("ssssssssss", "报错信息写入");
+        Log.e(TAG, "报错信息已写入本地文件: " + dir);
         OutputStreamWriter osw = null;
         BufferedWriter bw = null;
         try {
@@ -235,7 +236,6 @@ public class CrashUtils {
             closeSilently(bw);
             closeSilently(osw);
         }
-
     }
 
     /**

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.content.res.Resources;
-import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.os.PersistableBundle;
@@ -15,27 +14,20 @@ import android.view.View;
 import android.view.WindowManager;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.EditText;
-import android.widget.ImageView;
-import android.widget.TextView;
 
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
-import com.hjd.apputils.R;
 import com.hjd.apputils.custom.LoadingDialog;
 import com.hjd.apputils.utils.AppManager;
-import com.hjd.apputils.utils.CommonUtils;
-
 
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 
 
-public abstract class                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          BaseActivity extends FragmentActivity {
-    private TextView tvTitle;
+public abstract class BaseActivity extends FragmentActivity {
+
     private boolean toastAutoCancel = true;
-    private static final String TAG = "uploadImage";
     public static final Map<String, String> param = new HashMap<>();
 
     private LoadingDialog loadingDialog;
@@ -57,33 +49,16 @@ public abstract class                                                           
         this.toastAutoCancel = toastAutoCancel;
     }
 
-    /**
-     * 在oncreate后调用 修改标题
-     *
-     * @param title
-     */
-    public void setTitle(String title) {
-        tvTitle.setText(title);
-    }
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(returnLayoutResID());
         /*这行防止软键盘弹出时上面的空间错乱套*/
         getWindow().setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
-        CommonUtils.initState(this, R.color.contract_bar_col);
         loadingDialog = new LoadingDialog(this);
 
         AppManager.getInstance().addActivity(this);
 
-        tvTitle = (TextView) findViewById(R.id.head_title);
-        if (tvTitle != null) {
-            setTitle(setTitleInitLayout());
-        } else {
-            setTitleInitLayout();
-        }
         initView(savedInstanceState);
         initData();
     }
@@ -140,66 +115,6 @@ public abstract class                                                           
     public abstract int returnLayoutResID();
 
     /**
-     * 设置一个标题
-     *
-     * @return
-     */
-    public abstract String setTitleInitLayout();
-
-    /**
-     * 获取标题String
-     */
-    public String getTitleString() {
-        return tvTitle.getText().toString();
-    }
-
-    /**
-     * activity销毁方法
-     *
-     * @param view
-     */
-    public void back(View view) {
-        finish();
-    }
-
-
-    public void setRightButton(int Resid) {
-        ImageView rightButton = (ImageView) findViewById(R.id.head_right_button);
-        rightButton.setImageResource(Resid);
-        rightButton.setVisibility(View.VISIBLE);
-    }
-
-    public void setRightButtonText(String s) {
-        TextView rightButton = (TextView) findViewById(R.id.head_right_text_button);
-        rightButton.setText(s);
-        rightButton.setVisibility(View.VISIBLE);
-    }
-
-    public void setRightButtonTextColor(int color) {
-        TextView rightButton = (TextView) findViewById(R.id.head_right_text_button);
-        rightButton.setTextColor(color);
-        rightButton.setVisibility(View.VISIBLE);
-    }
-
-/*
-    public void setTitleLineColor(int color) {
-        View view = findViewById(R.id.view_title_line);
-        view.setBackgroundColor(color);
-    }*/
-
-    public void rightClick(View v) {
-
-    }
-
-    public void rightIVClick(View v) {
-
-    }
-
-    public void rightTVClick(View v) {
-
-    }
-
-    /**
      * 无参数打开一个activi
      *
      * @author guoyi
@@ -244,31 +159,6 @@ public abstract class                                                           
         config.setToDefaults();
         res.updateConfiguration(config, res.getDisplayMetrics());
         return res;
-    }
-
-    /*设置文字左面的图片*/
-    public void setLeftDrawable(int resid) {
-        TextView leftButton = (TextView) findViewById(R.id.head_left_text_button);
-        Drawable leftDrawable = ContextCompat.getDrawable(this, resid);
-        leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
-        leftButton.setCompoundDrawables(leftDrawable, null, null, null);
-    }
-
-    /*设置文字上面的图片*/
-    public void setTopDrawable(int resid) {
-        TextView leftButton = (TextView) findViewById(R.id.head_left_text_button);
-        Drawable leftDrawable = ContextCompat.getDrawable(this, resid);
-        leftDrawable.setBounds(0, leftDrawable.getMinimumWidth(), 0, leftDrawable.getMinimumHeight());
-        leftButton.setCompoundDrawables(leftDrawable, null, null, null);
-    }
-
-    public void setLeftDrawableAndTextColor(int resid, int color) {
-        TextView leftButton = (TextView) findViewById(R.id.head_left_text_button);
-        leftButton.setTextColor(color);
-        leftButton.setTextColor(color);
-        Drawable leftDrawable = ContextCompat.getDrawable(this, resid);
-        leftDrawable.setBounds(0, 0, leftDrawable.getMinimumWidth(), leftDrawable.getMinimumHeight());
-        leftButton.setCompoundDrawables(leftDrawable, null, null, null);
     }
 
     public String getIntentStringExtra(String key) {
